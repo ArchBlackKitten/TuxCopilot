@@ -25,7 +25,7 @@ optdepends=(
 )
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
         "$pkgname-$pkgver.tar.gz.asc::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.asc")
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('91e783f7b4de19e747c406272e96d2e637e3b76c72d8e7bbabf38dccbe65b643' 'SKIP')
 validpgpkeys=('1C30D7149E20A4724D92A4E324D4340FE9E2BF54') # ArchBlackKitten (TuxCopilot releases)
 
 # Follows Arch's Rust and Node.js package guidelines (wiki.archlinux.org/title/Rust_package_guidelines,

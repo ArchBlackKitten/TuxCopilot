@@ -849,8 +849,17 @@ about itself: a signed release, the creator's code between releases, changed
 on this computer, or a fork. A changed copy could change that check too, so it
 also shows how to check from outside TuxCopilot.
 
-TuxCopilot is in alpha, an early stage, and has no releases yet. When it has, each one will
-be signed with its own release key:
+Every release is signed with TuxCopilot's own release key. The first, v0.1.0, is an alpha:
+an early stage, to try out.
+
+```bash
+cd ~/Downloads
+for f in tuxcopilot-0.1.0.tar.gz tuxcopilot-0.1.0.tar.gz.asc tuxcopilot-0.1.0.tar.gz.sha256; do
+  curl -LO https://github.com/ArchBlackKitten/TuxCopilot/releases/download/v0.1.0/$f
+done
+```
+
+The key that signs them:
 
 ```
 ArchBlackKitten (TuxCopilot releases)
@@ -867,15 +876,25 @@ gpg --fingerprint 1C30D7149E20A4724D92A4E324D4340FE9E2BF54
 ```
 
 The fingerprint gpg prints must match the one above, character for character.
-Then, for a downloaded release (its name has the version in it):
+Then check the release you downloaded, both ways:
 
 ```bash
-gpg --verify tuxcopilot-<version>.tar.gz.asc tuxcopilot-<version>.tar.gz
+gpg --verify tuxcopilot-0.1.0.tar.gz.asc tuxcopilot-0.1.0.tar.gz
+sha256sum -c tuxcopilot-0.1.0.tar.gz.sha256
 ```
 
-It must say **Good signature from "ArchBlackKitten (TuxCopilot releases)"**.
-In a downloaded copy of the code, `git verify-tag v<version>` checks the
-release tag the same way.
+gpg must say **Good signature from "ArchBlackKitten (TuxCopilot releases)"**, and sha256sum
+must say **OK**. In a downloaded copy of the code, `git verify-tag v0.1.0` checks the release
+tag the same way.
+
+Every commit is signed too, with ArchBlackKitten's SSH key. Its public half is in the code, so
+in a downloaded copy you can check the newest commit:
+
+```bash
+git -c gpg.ssh.allowedSignersFile=keys/allowed_signers verify-commit HEAD
+```
+
+It must say **Good "git" signature**.
 
 ## If something goes wrong
 

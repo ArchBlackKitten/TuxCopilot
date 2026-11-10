@@ -32,7 +32,7 @@ pkgbase = tuxcopilot
 	source = tuxcopilot-0.1.0.tar.gz::https://github.com/ArchBlackKitten/TuxCopilot/releases/download/v0.1.0/tuxcopilot-0.1.0.tar.gz
 	source = tuxcopilot-0.1.0.tar.gz.asc::https://github.com/ArchBlackKitten/TuxCopilot/releases/download/v0.1.0/tuxcopilot-0.1.0.tar.gz.asc
 	validpgpkeys = 1C30D7149E20A4724D92A4E324D4340FE9E2BF54
-	sha256sums = SKIP
+	sha256sums = 91e783f7b4de19e747c406272e96d2e637e3b76c72d8e7bbabf38dccbe65b643
 	sha256sums = SKIP
 
 pkgname = tuxcopilot
