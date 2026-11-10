@@ -1,0 +1,4858 @@
+{
+  "about": "TuxCopilot's command catalogue: every command the Commands section explains, finds and opens a page for. Plain words for someone who has just installed Arch. 'words' are what people type when they search; 'oftenWith' and 'neededBy' name other commands in this file. Expanded with system, hardware, network, sound, display, security and development tools.",
+  "commands": [
+    {
+      "name": "ls",
+      "pkg": "coreutils",
+      "group": "Files and folders",
+      "what": "Lists what is in a folder: its files and folders.",
+      "usage": "ls [options] [folder…]",
+      "words": [
+        "list",
+        "show",
+        "files",
+        "folder",
+        "directory",
+        "contents",
+        "what is in"
+      ],
+      "examples": [
+        {
+          "command": "ls",
+          "meaning": "what is in the folder you are in"
+        },
+        {
+          "command": "ls -la ~",
+          "meaning": "everything in your home folder, hidden files too, with sizes, owners and dates"
+        },
+        {
+          "command": "ls -lh /var/cache/pacman/pkg",
+          "meaning": "the package cache, with sizes people can read (K, M, G)"
+        }
+      ],
+      "options": [
+        {
+          "token": "-l",
+          "meaning": "long list: permissions, owner, size, date"
+        },
+        {
+          "token": "-a",
+          "meaning": "all: also hidden files (names starting with a dot)"
+        },
+        {
+          "token": "-h",
+          "meaning": "with -l: sizes as K, M, G instead of bytes"
+        },
+        {
+          "token": "-t",
+          "meaning": "newest first"
+        },
+        {
+          "token": "-R",
+          "meaning": "recursive: the folders inside, and theirs"
+        }
+      ],
+      "oftenWith": [
+        "cd",
+        "pwd",
+        "du"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "cd",
+      "pkg": "bash (built in)",
+      "group": "Files and folders",
+      "what": "Changes the folder you are in (the working directory). It is part of the shell itself, not a program.",
+      "usage": "cd [folder]",
+      "words": [
+        "change",
+        "go",
+        "enter",
+        "open",
+        "folder",
+        "directory",
+        "move into"
+      ],
+      "examples": [
+        {
+          "command": "cd ~/Downloads",
+          "meaning": "go into your Downloads folder"
+        },
+        {
+          "command": "cd ..",
+          "meaning": "go up one folder"
+        },
+        {
+          "command": "cd -",
+          "meaning": "go back to the folder you were in before"
+        },
+        {
+          "command": "cd",
+          "meaning": "go home (~)"
+        }
+      ],
+      "options": [],
+      "oftenWith": [
+        "ls",
+        "pwd",
+        "mkdir"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "pwd",
+      "pkg": "coreutils",
+      "group": "Files and folders",
+      "what": "Prints the folder you are in (print working directory).",
+      "usage": "pwd",
+      "words": [
+        "where",
+        "current",
+        "folder",
+        "directory",
+        "path",
+        "location"
+      ],
+      "examples": [
+        {
+          "command": "pwd",
+          "meaning": "for example /home/you/Downloads"
+        }
+      ],
+      "options": [],
+      "oftenWith": [
+        "cd",
+        "ls"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "mkdir",
+      "pkg": "coreutils",
+      "group": "Files and folders",
+      "what": "Makes a new folder (make directory).",
+      "usage": "mkdir [options] <folder>…",
+      "words": [
+        "make",
+        "create",
+        "new",
+        "folder",
+        "directory",
+        "dir"
+      ],
+      "examples": [
+        {
+          "command": "mkdir Projects",
+          "meaning": "a folder named Projects, inside the folder you are in"
+        },
+        {
+          "command": "mkdir -p ~/Projects/site/images",
+          "meaning": "the whole path at once, making each missing folder on the way"
+        },
+        {
+          "command": "mkdir -m 700 ~/private",
+          "meaning": "a folder only you can open (see chmod for the numbers)"
+        }
+      ],
+      "options": [
+        {
+          "token": "-p",
+          "meaning": "parents: make the folders on the way too; no error if it already exists"
+        },
+        {
+          "token": "-m",
+          "meaning": "mode: its permissions at once, like chmod (e.g. -m 700)"
+        },
+        {
+          "token": "-v",
+          "meaning": "verbose: say each folder made"
+        }
+      ],
+      "oftenWith": [
+        "cd",
+        "ls",
+        "chmod",
+        "rmdir"
+      ],
+      "neededBy": [
+        "makepkg"
+      ]
+    },
+    {
+      "name": "rmdir",
+      "pkg": "coreutils",
+      "group": "Files and folders",
+      "what": "Removes a folder, only if it is empty — the safe way to remove a folder.",
+      "usage": "rmdir <folder>…",
+      "words": [
+        "remove",
+        "delete",
+        "empty",
+        "folder",
+        "directory"
+      ],
+      "examples": [
+        {
+          "command": "rmdir old-folder",
+          "meaning": "removes it if it is empty; refuses otherwise"
+        }
+      ],
+      "options": [
+        {
+          "token": "-p",
+          "meaning": "also the parent folders, if they become empty"
+        }
+      ],
+      "oftenWith": [
+        "mkdir",
+        "rm"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "touch",
+      "pkg": "coreutils",
+      "group": "Files and folders",
+      "what": "Makes an empty file, or sets an existing file's date to now.",
+      "usage": "touch <file>…",
+      "words": [
+        "create",
+        "new",
+        "empty",
+        "file",
+        "make"
+      ],
+      "examples": [
+        {
+          "command": "touch notes.txt",
+          "meaning": "an empty notes.txt (an existing one is left as it is, only its date changes)"
+        }
+      ],
+      "options": [],
+      "oftenWith": [
+        "nano",
+        "ls"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "cp",
+      "pkg": "coreutils",
+      "group": "Files and folders",
+      "what": "Copies files and folders.",
+      "usage": "cp [options] <from>… <to>",
+      "words": [
+        "copy",
+        "duplicate",
+        "backup",
+        "file",
+        "folder",
+        "directory"
+      ],
+      "examples": [
+        {
+          "command": "cp notes.txt notes-backup.txt",
+          "meaning": "a copy beside it"
+        },
+        {
+          "command": "cp -r ~/Pictures /run/media/you/USB/",
+          "meaning": "a whole folder onto a USB stick"
+        },
+        {
+          "command": "cp -a ~/.config/krita ~/krita-backup",
+          "meaning": "a folder exactly as it is: permissions, dates and links kept"
+        }
+      ],
+      "options": [
+        {
+          "token": "-r",
+          "meaning": "recursive: folders and everything in them"
+        },
+        {
+          "token": "-a",
+          "meaning": "archive: like -r, and keeps permissions, owners, dates and links"
+        },
+        {
+          "token": "-i",
+          "meaning": "interactive: ask before replacing a file"
+        },
+        {
+          "token": "-v",
+          "meaning": "verbose: say each file copied"
+        }
+      ],
+      "caution": "cp replaces a file of the same name without asking, unless you add -i.",
+      "oftenWith": [
+        "mv",
+        "rsync",
+        "ls"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "mv",
+      "pkg": "coreutils",
+      "group": "Files and folders",
+      "what": "Moves files and folders, or renames them.",
+      "usage": "mv [options] <from>… <to>",
+      "words": [
+        "move",
+        "rename",
+        "file",
+        "folder",
+        "directory"
+      ],
+      "examples": [
+        {
+          "command": "mv draft.txt final.txt",
+          "meaning": "renames draft.txt"
+        },
+        {
+          "command": "mv *.png ~/Pictures/",
+          "meaning": "moves every .png here into Pictures"
+        }
+      ],
+      "options": [
+        {
+          "token": "-i",
+          "meaning": "interactive: ask before replacing a file"
+        },
+        {
+          "token": "-n",
+          "meaning": "no-clobber: never replace a file"
+        },
+        {
+          "token": "-v",
+          "meaning": "verbose: say each move"
+        }
+      ],
+      "caution": "mv replaces a file of the same name without asking, unless you add -i.",
+      "oftenWith": [
+        "cp",
+        "ls"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "rm",
+      "pkg": "coreutils",
+      "group": "Files and folders",
+      "what": "Removes files (and, with -r, folders). There is no rubbish bin: what rm removes is gone.",
+      "usage": "rm [options] <file>…",
+      "words": [
+        "remove",
+        "delete",
+        "erase",
+        "file",
+        "folder",
+        "directory"
+      ],
+      "examples": [
+        {
+          "command": "rm old.txt",
+          "meaning": "removes one file"
+        },
+        {
+          "command": "rm -ri old-folder",
+          "meaning": "a folder and everything in it, asking for each file"
+        }
+      ],
+      "options": [
+        {
+          "token": "-r",
+          "meaning": "recursive: folders and everything in them"
+        },
+        {
+          "token": "-i",
+          "meaning": "ask before each removal"
+        },
+        {
+          "token": "-f",
+          "meaning": "force: never ask, no error for missing files — careful"
+        },
+        {
+          "token": "-v",
+          "meaning": "verbose: say each file removed"
+        }
+      ],
+      "caution": "No undo. Read the command twice; sudo rm -rf can erase the whole system.",
+      "oftenWith": [
+        "ls",
+        "rmdir",
+        "find"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "ln",
+      "pkg": "coreutils",
+      "group": "Files and folders",
+      "what": "Makes a link: a second name that points at a file or folder.",
+      "usage": "ln -s <target> <link name>",
+      "words": [
+        "link",
+        "symlink",
+        "shortcut",
+        "point"
+      ],
+      "examples": [
+        {
+          "command": "ln -s ~/dotfiles/.zshrc ~/.zshrc",
+          "meaning": "~/.zshrc becomes a pointer to the file in ~/dotfiles"
+        }
+      ],
+      "options": [
+        {
+          "token": "-s",
+          "meaning": "symbolic link (the usual kind, works across disks and for folders)"
+        },
+        {
+          "token": "-f",
+          "meaning": "replace a link that is already there"
+        }
+      ],
+      "oftenWith": [
+        "ls"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "cat",
+      "pkg": "coreutils",
+      "group": "Reading files",
+      "what": "Prints a file's text into the terminal (or joins several files).",
+      "usage": "cat <file>…",
+      "words": [
+        "show",
+        "print",
+        "read",
+        "view",
+        "file",
+        "contents",
+        "text"
+      ],
+      "examples": [
+        {
+          "command": "cat /etc/os-release",
+          "meaning": "which distribution this is"
+        },
+        {
+          "command": "cat part1.txt part2.txt > whole.txt",
+          "meaning": "two files joined into a third"
+        }
+      ],
+      "options": [
+        {
+          "token": "-n",
+          "meaning": "number the lines"
+        }
+      ],
+      "oftenWith": [
+        "less",
+        "grep",
+        "head",
+        "tail"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "less",
+      "pkg": "less",
+      "group": "Reading files",
+      "what": "Shows a long text one screen at a time. Space or Page Down goes on, b goes back, / searches, q quits.",
+      "usage": "less <file>",
+      "words": [
+        "read",
+        "view",
+        "page",
+        "scroll",
+        "long",
+        "file"
+      ],
+      "examples": [
+        {
+          "command": "less /etc/pacman.conf",
+          "meaning": "read pacman's settings"
+        },
+        {
+          "command": "pacman -Qi firefox | less",
+          "meaning": "any long output, a screen at a time"
+        }
+      ],
+      "options": [
+        {
+          "token": "-N",
+          "meaning": "line numbers"
+        }
+      ],
+      "oftenWith": [
+        "cat",
+        "grep",
+        "journalctl"
+      ],
+      "neededBy": [
+        "man",
+        "journalctl",
+        "systemctl",
+        "git"
+      ]
+    },
+    {
+      "name": "head",
+      "pkg": "coreutils",
+      "group": "Reading files",
+      "what": "Shows the first lines of a file or of an output (10 unless told).",
+      "usage": "head [-n N] <file>",
+      "words": [
+        "first",
+        "top",
+        "start",
+        "beginning",
+        "lines"
+      ],
+      "examples": [
+        {
+          "command": "head -n 20 ~/.bashrc",
+          "meaning": "its first 20 lines"
+        }
+      ],
+      "options": [
+        {
+          "token": "-n",
+          "meaning": "how many lines"
+        }
+      ],
+      "oftenWith": [
+        "tail",
+        "cat",
+        "sort"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "tail",
+      "pkg": "coreutils",
+      "group": "Reading files",
+      "what": "Shows the last lines of a file (10 unless told); with -f, keeps showing new lines as they are written.",
+      "usage": "tail [-n N] [-f] <file>",
+      "words": [
+        "last",
+        "end",
+        "bottom",
+        "follow",
+        "log",
+        "lines"
+      ],
+      "examples": [
+        {
+          "command": "tail -n 50 /var/log/pacman.log",
+          "meaning": "pacman's last 50 actions"
+        },
+        {
+          "command": "tail -f /var/log/pacman.log",
+          "meaning": "watch it live (Ctrl+C stops)"
+        }
+      ],
+      "options": [
+        {
+          "token": "-n",
+          "meaning": "how many lines"
+        },
+        {
+          "token": "-f",
+          "meaning": "follow: keep printing new lines"
+        }
+      ],
+      "oftenWith": [
+        "head",
+        "journalctl",
+        "grep"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "nano",
+      "pkg": "nano",
+      "group": "Editing files",
+      "what": "A simple text editor in the terminal. Its keys are shown at the bottom: ^ means Ctrl. Ctrl+O saves, Ctrl+X quits.",
+      "usage": "nano <file>",
+      "words": [
+        "edit",
+        "editor",
+        "change",
+        "write",
+        "text",
+        "file",
+        "config"
+      ],
+      "examples": [
+        {
+          "command": "nano ~/.bashrc",
+          "meaning": "edit your shell's settings"
+        },
+        {
+          "command": "sudo nano /etc/pacman.conf",
+          "meaning": "edit a system file (system files need sudo)"
+        }
+      ],
+      "options": [
+        {
+          "token": "-l",
+          "meaning": "show line numbers"
+        }
+      ],
+      "oftenWith": [
+        "sudo",
+        "cat"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "vim",
+      "pkg": "vim",
+      "group": "Editing files",
+      "what": "A powerful text editor with modes: i to type, Esc to stop typing, :w to save, :q to quit (:q! quits without saving).",
+      "usage": "vim <file>",
+      "words": [
+        "edit",
+        "editor",
+        "vi",
+        "text",
+        "file"
+      ],
+      "examples": [
+        {
+          "command": "vim notes.txt",
+          "meaning": "edit notes.txt"
+        }
+      ],
+      "options": [],
+      "oftenWith": [
+        "sudo"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "find",
+      "pkg": "findutils",
+      "group": "Finding things",
+      "what": "Finds files and folders by name, size, date or type, walking through every folder inside the one you give.",
+      "usage": "find <where> [tests] [actions]",
+      "words": [
+        "find",
+        "search",
+        "locate",
+        "where",
+        "file",
+        "folder",
+        "directory",
+        "name"
+      ],
+      "examples": [
+        {
+          "command": "find ~ -name '*.pdf'",
+          "meaning": "every PDF in your home"
+        },
+        {
+          "command": "find ~/Downloads -size +500M",
+          "meaning": "files over 500 MB in Downloads"
+        },
+        {
+          "command": "find /etc -name '*.pacnew' 2>/dev/null",
+          "meaning": "settings files a package update left waiting"
+        }
+      ],
+      "options": [
+        {
+          "token": "-name",
+          "meaning": "by name (quote patterns with *)"
+        },
+        {
+          "token": "-iname",
+          "meaning": "by name, any case"
+        },
+        {
+          "token": "-type",
+          "meaning": "f for files, d for folders"
+        },
+        {
+          "token": "-size",
+          "meaning": "by size: +100M is over 100 MB"
+        },
+        {
+          "token": "-mtime",
+          "meaning": "by age in days: -7 is changed this week"
+        },
+        {
+          "token": "-delete",
+          "meaning": "remove what it finds — check without it first"
+        }
+      ],
+      "oftenWith": [
+        "grep",
+        "xargs",
+        "rm"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "grep",
+      "pkg": "grep",
+      "group": "Finding things",
+      "what": "Finds lines of text that contain a word or pattern — in files, or in another command's output.",
+      "usage": "grep [options] <pattern> [file…]",
+      "words": [
+        "search",
+        "find",
+        "text",
+        "word",
+        "inside",
+        "filter",
+        "lines",
+        "match"
+      ],
+      "examples": [
+        {
+          "command": "grep -i error /var/log/pacman.log",
+          "meaning": "lines with error, any case"
+        },
+        {
+          "command": "pacman -Q | grep python",
+          "meaning": "installed packages with python in their name"
+        },
+        {
+          "command": "grep -rn 'ParallelDownloads' /etc",
+          "meaning": "which file under /etc sets it, with line numbers"
+        }
+      ],
+      "options": [
+        {
+          "token": "-i",
+          "meaning": "ignore case"
+        },
+        {
+          "token": "-r",
+          "meaning": "recursive: every file in a folder"
+        },
+        {
+          "token": "-n",
+          "meaning": "line numbers"
+        },
+        {
+          "token": "-v",
+          "meaning": "invert: lines without it"
+        },
+        {
+          "token": "-c",
+          "meaning": "count matching lines"
+        },
+        {
+          "token": "-E",
+          "meaning": "extended patterns (a|b, +, ?)"
+        }
+      ],
+      "oftenWith": [
+        "find",
+        "cat",
+        "less",
+        "journalctl"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "which",
+      "pkg": "which",
+      "group": "Finding things",
+      "what": "Says where a command's program is, or nothing if there is none.",
+      "usage": "which <command>",
+      "words": [
+        "where",
+        "path",
+        "program",
+        "installed",
+        "command",
+        "location"
+      ],
+      "examples": [
+        {
+          "command": "which python",
+          "meaning": "for example /usr/bin/python"
+        }
+      ],
+      "options": [],
+      "oftenWith": [
+        "pacman"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "file",
+      "pkg": "file",
+      "group": "Finding things",
+      "what": "Says what kind of file something is, by looking inside it (not by its name).",
+      "usage": "file <file>…",
+      "words": [
+        "type",
+        "kind",
+        "what",
+        "format"
+      ],
+      "examples": [
+        {
+          "command": "file download.bin",
+          "meaning": "for example: a PNG image, or a gzip archive"
+        }
+      ],
+      "options": [],
+      "oftenWith": [
+        "ls"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "sort",
+      "pkg": "coreutils",
+      "group": "Text",
+      "what": "Sorts lines: alphabetically, or by number.",
+      "usage": "sort [options] [file]",
+      "words": [
+        "sort",
+        "order",
+        "alphabetical",
+        "numbers",
+        "lines"
+      ],
+      "examples": [
+        {
+          "command": "du -sh ~/* | sort -h",
+          "meaning": "your home's folders from smallest to largest"
+        }
+      ],
+      "options": [
+        {
+          "token": "-n",
+          "meaning": "by number"
+        },
+        {
+          "token": "-h",
+          "meaning": "by size like 2K, 1M, 3G"
+        },
+        {
+          "token": "-r",
+          "meaning": "reverse"
+        },
+        {
+          "token": "-u",
+          "meaning": "drop repeated lines"
+        }
+      ],
+      "oftenWith": [
+        "uniq",
+        "du",
+        "head"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "uniq",
+      "pkg": "coreutils",
+      "group": "Text",
+      "what": "Drops lines that repeat the line just before (so sort first); with -c, counts them.",
+      "usage": "sort <file> | uniq [-c]",
+      "words": [
+        "duplicate",
+        "repeated",
+        "unique",
+        "count",
+        "lines"
+      ],
+      "examples": [
+        {
+          "command": "sort names.txt | uniq -c | sort -rn",
+          "meaning": "each name with how often it appears, most first"
+        }
+      ],
+      "options": [
+        {
+          "token": "-c",
+          "meaning": "count each"
+        },
+        {
+          "token": "-d",
+          "meaning": "only lines that repeat"
+        }
+      ],
+      "oftenWith": [
+        "sort",
+        "wc"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "wc",
+      "pkg": "coreutils",
+      "group": "Text",
+      "what": "Counts lines, words and characters.",
+      "usage": "wc [-l|-w|-c] [file]",
+      "words": [
+        "count",
+        "how many",
+        "lines",
+        "words",
+        "number"
+      ],
+      "examples": [
+        {
+          "command": "pacman -Qqe | wc -l",
+          "meaning": "how many packages you installed yourself"
+        }
+      ],
+      "options": [
+        {
+          "token": "-l",
+          "meaning": "lines only"
+        },
+        {
+          "token": "-w",
+          "meaning": "words only"
+        }
+      ],
+      "oftenWith": [
+        "grep",
+        "pacman"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "diff",
+      "pkg": "diffutils",
+      "group": "Text",
+      "what": "Shows how two files differ, line by line.",
+      "usage": "diff [options] <file1> <file2>",
+      "words": [
+        "compare",
+        "difference",
+        "changes",
+        "two",
+        "files"
+      ],
+      "examples": [
+        {
+          "command": "diff -u /etc/pacman.conf /etc/pacman.conf.pacnew",
+          "meaning": "your settings against the new default a package update left"
+        }
+      ],
+      "options": [
+        {
+          "token": "-u",
+          "meaning": "unified: the easiest way to read changes (- removed, + added)"
+        }
+      ],
+      "oftenWith": [
+        "pacdiff"
+      ],
+      "neededBy": [
+        "pacdiff"
+      ]
+    },
+    {
+      "name": "echo",
+      "pkg": "bash (built in)",
+      "group": "Text",
+      "what": "Prints the words you give it. Used to show messages, or to write a line into a file.",
+      "usage": "echo <text>",
+      "words": [
+        "print",
+        "say",
+        "write",
+        "text",
+        "message"
+      ],
+      "examples": [
+        {
+          "command": "echo $HOME",
+          "meaning": "your home folder's path"
+        }
+      ],
+      "options": [
+        {
+          "token": "-e",
+          "meaning": "understand \\n (new line) and \\t (tab)"
+        }
+      ],
+      "oftenWith": [
+        "tee"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "tee",
+      "pkg": "coreutils",
+      "group": "Text",
+      "what": "Writes what it receives into a file and shows it too. With sudo, the usual way to write into a system file from a command.",
+      "usage": "<command> | tee [-a] <file>",
+      "words": [
+        "write",
+        "save",
+        "file",
+        "output",
+        "append"
+      ],
+      "examples": [
+        {
+          "command": "echo 'vm.swappiness=10' | sudo tee /etc/sysctl.d/99-swap.conf",
+          "meaning": "writes a line into a system file (sudo echo > file would not work: the > is not run as root)"
+        }
+      ],
+      "options": [
+        {
+          "token": "-a",
+          "meaning": "append: add to the end instead of replacing"
+        }
+      ],
+      "oftenWith": [
+        "sudo",
+        "echo"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "sed",
+      "pkg": "sed",
+      "group": "Text",
+      "what": "Changes text as it passes through: most often, replaces one word with another.",
+      "usage": "sed 's/old/new/g' <file>",
+      "words": [
+        "replace",
+        "substitute",
+        "change",
+        "edit",
+        "text",
+        "stream"
+      ],
+      "examples": [
+        {
+          "command": "sed 's/foo/bar/g' notes.txt",
+          "meaning": "shows notes.txt with every foo as bar (the file is not changed)"
+        },
+        {
+          "command": "sed -i 's/foo/bar/g' notes.txt",
+          "meaning": "changes the file itself"
+        }
+      ],
+      "options": [
+        {
+          "token": "-i",
+          "meaning": "in place: change the file itself"
+        }
+      ],
+      "oftenWith": [
+        "grep",
+        "awk"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "awk",
+      "pkg": "gawk",
+      "group": "Text",
+      "what": "Reads text in columns: picks out, adds up or rearranges the parts of each line.",
+      "usage": "awk '<program>' [file]",
+      "words": [
+        "column",
+        "field",
+        "text",
+        "extract",
+        "pick"
+      ],
+      "examples": [
+        {
+          "command": "df -h | awk '{print $1, $5}'",
+          "meaning": "each disk with how full it is"
+        }
+      ],
+      "options": [
+        {
+          "token": "-F",
+          "meaning": "what separates the columns (a space unless told)"
+        }
+      ],
+      "oftenWith": [
+        "grep",
+        "sed",
+        "sort"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "xargs",
+      "pkg": "findutils",
+      "group": "Text",
+      "what": "Turns lines it receives into the arguments of another command.",
+      "usage": "<command> | xargs <command>",
+      "words": [
+        "arguments",
+        "each",
+        "pass",
+        "pipe"
+      ],
+      "examples": [
+        {
+          "command": "find . -name '*.tmp' | xargs rm",
+          "meaning": "removes every .tmp file found here"
+        }
+      ],
+      "options": [
+        {
+          "token": "-r",
+          "meaning": "run nothing when it receives nothing"
+        }
+      ],
+      "oftenWith": [
+        "find",
+        "grep"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "chmod",
+      "pkg": "coreutils",
+      "group": "Permissions and users",
+      "what": "Changes who may read, write and open (run) a file or folder. The numbers: each digit is owner, group, everyone else; 4 read + 2 write + 1 run. 700 = only you, everything. 755 = you everything, others read and run. 644 = you read and write, others read. 600 = only you, read and write.",
+      "usage": "chmod <mode> <file>…",
+      "words": [
+        "permission",
+        "permissions",
+        "access",
+        "executable",
+        "run",
+        "read",
+        "write",
+        "mode",
+        "700",
+        "755",
+        "644",
+        "600"
+      ],
+      "examples": [
+        {
+          "command": "chmod +x script.sh",
+          "meaning": "lets it be run as a program"
+        },
+        {
+          "command": "chmod 600 ~/.ssh/id_ed25519",
+          "meaning": "a private key only you can read (ssh refuses keys others can read)"
+        },
+        {
+          "command": "chmod -R 755 ~/public",
+          "meaning": "a folder others may open and read, everything inside too"
+        }
+      ],
+      "options": [
+        {
+          "token": "-R",
+          "meaning": "recursive: everything inside a folder"
+        },
+        {
+          "token": "+x",
+          "meaning": "add run permission"
+        },
+        {
+          "token": "-x",
+          "meaning": "take run permission away"
+        }
+      ],
+      "oftenWith": [
+        "chown",
+        "ls",
+        "mkdir"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "chown",
+      "pkg": "coreutils",
+      "group": "Permissions and users",
+      "what": "Changes who owns a file or folder (needs sudo for files that are not yours).",
+      "usage": "sudo chown <user>[:<group>] <file>…",
+      "words": [
+        "owner",
+        "ownership",
+        "belong",
+        "user",
+        "group"
+      ],
+      "examples": [
+        {
+          "command": "sudo chown -R $USER: ~/Projects",
+          "meaning": "makes everything in Projects yours again"
+        }
+      ],
+      "options": [
+        {
+          "token": "-R",
+          "meaning": "recursive: everything inside a folder"
+        }
+      ],
+      "oftenWith": [
+        "chmod",
+        "sudo"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "sudo",
+      "pkg": "sudo",
+      "group": "Permissions and users",
+      "what": "Runs one command as root (the system's own all-powerful user), after asking for your password. On Arch your user can use it when it is in the wheel group.",
+      "usage": "sudo [options] <command>",
+      "words": [
+        "root",
+        "admin",
+        "administrator",
+        "superuser",
+        "permission",
+        "system",
+        "password"
+      ],
+      "examples": [
+        {
+          "command": "sudo pacman -Syu",
+          "meaning": "updating the system needs root"
+        },
+        {
+          "command": "sudo -i",
+          "meaning": "a root shell, until you type exit — careful"
+        },
+        {
+          "command": "sudo -k",
+          "meaning": "forget the password now: the next sudo asks again"
+        }
+      ],
+      "options": [
+        {
+          "token": "-i",
+          "meaning": "a login shell as root"
+        },
+        {
+          "token": "-u",
+          "meaning": "as another user instead of root (-u name)"
+        },
+        {
+          "token": "-k",
+          "meaning": "forget the remembered password"
+        },
+        {
+          "token": "-l",
+          "meaning": "list what you may run with sudo"
+        },
+        {
+          "token": "-E",
+          "meaning": "keep your environment variables"
+        },
+        {
+          "token": "-A",
+          "meaning": "ask for the password with a window (SUDO_ASKPASS) — how TuxCopilot asks"
+        },
+        {
+          "token": "-n",
+          "meaning": "never ask: fail instead of asking for a password"
+        },
+        {
+          "token": "-v",
+          "meaning": "refresh the remembered password without running anything"
+        },
+        {
+          "token": "-s",
+          "meaning": "run a shell"
+        },
+        {
+          "token": "-H",
+          "meaning": "set HOME to the target user's home"
+        }
+      ],
+      "caution": "Everything after sudo runs with full power over the system. Never sudo yay or makepkg: they refuse it, rightly.",
+      "oftenWith": [
+        "pacman",
+        "systemctl",
+        "nano",
+        "tee"
+      ],
+      "neededBy": [
+        "pacman",
+        "systemctl",
+        "mount",
+        "chown",
+        "reflector",
+        "mkinitcpio"
+      ]
+    },
+    {
+      "name": "su",
+      "pkg": "util-linux",
+      "group": "Permissions and users",
+      "what": "Switches to another user (root, unless told) in this terminal, with that user's password.",
+      "usage": "su [-] [user]",
+      "words": [
+        "switch",
+        "user",
+        "root",
+        "become"
+      ],
+      "examples": [
+        {
+          "command": "su - otheruser",
+          "meaning": "become otheruser, with their own settings"
+        }
+      ],
+      "options": [
+        {
+          "token": "-",
+          "meaning": "a login shell: the user's own environment"
+        }
+      ],
+      "oftenWith": [
+        "sudo",
+        "whoami"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "whoami",
+      "pkg": "coreutils",
+      "group": "Permissions and users",
+      "what": "Prints the name of the user you are.",
+      "usage": "whoami",
+      "words": [
+        "user",
+        "name",
+        "who",
+        "me",
+        "account"
+      ],
+      "examples": [
+        {
+          "command": "whoami",
+          "meaning": "your user name (root inside sudo)"
+        }
+      ],
+      "options": [],
+      "oftenWith": [
+        "id"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "id",
+      "pkg": "coreutils",
+      "group": "Permissions and users",
+      "what": "Prints your user and the groups you are in (wheel lets you use sudo, docker lets you use Docker…).",
+      "usage": "id [user]",
+      "words": [
+        "user",
+        "groups",
+        "group",
+        "uid",
+        "member"
+      ],
+      "examples": [
+        {
+          "command": "id",
+          "meaning": "your user number and groups"
+        }
+      ],
+      "options": [
+        {
+          "token": "-nG",
+          "meaning": "just the group names"
+        }
+      ],
+      "oftenWith": [
+        "usermod",
+        "whoami",
+        "groups"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "groups",
+      "pkg": "coreutils",
+      "group": "Permissions and users",
+      "what": "Prints the groups a user is in.",
+      "usage": "groups [user]",
+      "words": [
+        "groups",
+        "member",
+        "user"
+      ],
+      "examples": [
+        {
+          "command": "groups",
+          "meaning": "your groups"
+        }
+      ],
+      "options": [],
+      "oftenWith": [
+        "id",
+        "usermod"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "usermod",
+      "pkg": "shadow",
+      "group": "Permissions and users",
+      "what": "Changes a user account — most often, adds you to a group. It takes effect after you log out and in again.",
+      "usage": "sudo usermod -aG <group> <user>",
+      "words": [
+        "group",
+        "add",
+        "user",
+        "account",
+        "member"
+      ],
+      "examples": [
+        {
+          "command": "sudo usermod -aG docker $USER",
+          "meaning": "lets you use Docker without sudo (log out and in)"
+        }
+      ],
+      "options": [
+        {
+          "token": "-aG",
+          "meaning": "append to these groups — without -a, you are removed from all others"
+        }
+      ],
+      "caution": "Always -aG together: -G alone takes you out of every group not named, wheel too.",
+      "oftenWith": [
+        "id",
+        "groups"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "passwd",
+      "pkg": "shadow",
+      "group": "Permissions and users",
+      "what": "Changes a password: yours, or (with sudo) another user's.",
+      "usage": "passwd [user]",
+      "words": [
+        "password",
+        "change",
+        "account",
+        "user"
+      ],
+      "examples": [
+        {
+          "command": "passwd",
+          "meaning": "change your own password"
+        }
+      ],
+      "options": [],
+      "oftenWith": [
+        "sudo"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "tar",
+      "pkg": "tar",
+      "group": "Archives",
+      "what": "Packs folders into one archive file (.tar, .tar.gz, .tar.zst) and unpacks them.",
+      "usage": "tar -xf <archive> | tar -caf <archive> <files>",
+      "words": [
+        "archive",
+        "extract",
+        "unpack",
+        "compress",
+        "pack",
+        "tarball",
+        "zip",
+        "backup"
+      ],
+      "examples": [
+        {
+          "command": "tar -xf something.tar.gz",
+          "meaning": "unpacks it here (any kind of .tar.*)"
+        },
+        {
+          "command": "tar -caf backup.tar.zst ~/Documents",
+          "meaning": "packs Documents, compressed by the name's ending"
+        },
+        {
+          "command": "tar -tf something.tar.gz",
+          "meaning": "lists what is inside without unpacking"
+        }
+      ],
+      "options": [
+        {
+          "token": "-x",
+          "meaning": "extract (unpack)"
+        },
+        {
+          "token": "-c",
+          "meaning": "create (pack)"
+        },
+        {
+          "token": "-t",
+          "meaning": "list the contents"
+        },
+        {
+          "token": "-f",
+          "meaning": "the archive file's name comes next"
+        },
+        {
+          "token": "-a",
+          "meaning": "choose the compression from the name (.gz, .xz, .zst)"
+        },
+        {
+          "token": "-v",
+          "meaning": "verbose: each file as it goes"
+        }
+      ],
+      "oftenWith": [
+        "unzip",
+        "ls"
+      ],
+      "neededBy": [
+        "makepkg"
+      ]
+    },
+    {
+      "name": "unzip",
+      "pkg": "unzip",
+      "group": "Archives",
+      "what": "Unpacks a .zip file.",
+      "usage": "unzip <file.zip> [-d folder]",
+      "words": [
+        "zip",
+        "extract",
+        "unpack",
+        "archive",
+        "decompress"
+      ],
+      "examples": [
+        {
+          "command": "unzip photos.zip -d ~/Pictures/trip",
+          "meaning": "unpacks into a folder of its own"
+        }
+      ],
+      "options": [
+        {
+          "token": "-d",
+          "meaning": "into this folder"
+        },
+        {
+          "token": "-l",
+          "meaning": "list without unpacking"
+        }
+      ],
+      "oftenWith": [
+        "tar",
+        "zip"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "zip",
+      "pkg": "zip",
+      "group": "Archives",
+      "what": "Packs files into a .zip archive (the kind every computer opens).",
+      "usage": "zip -r <archive.zip> <files>",
+      "words": [
+        "zip",
+        "compress",
+        "pack",
+        "archive"
+      ],
+      "examples": [
+        {
+          "command": "zip -r photos.zip ~/Pictures/trip",
+          "meaning": "a folder as photos.zip"
+        }
+      ],
+      "options": [
+        {
+          "token": "-r",
+          "meaning": "recursive: folders and everything in them"
+        }
+      ],
+      "oftenWith": [
+        "unzip"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "curl",
+      "pkg": "curl",
+      "group": "Network",
+      "what": "Fetches something from a web address: shows it, or saves it.",
+      "usage": "curl [options] <url>",
+      "words": [
+        "download",
+        "fetch",
+        "web",
+        "http",
+        "url",
+        "internet",
+        "request"
+      ],
+      "examples": [
+        {
+          "command": "curl -LO https://example.com/file.tar.gz",
+          "meaning": "downloads a file under its own name"
+        },
+        {
+          "command": "curl -s https://check.torproject.org/api/ip",
+          "meaning": "asks the Tor Project whether you come through Tor"
+        }
+      ],
+      "options": [
+        {
+          "token": "-L",
+          "meaning": "follow redirects"
+        },
+        {
+          "token": "-O",
+          "meaning": "save under the file's own name"
+        },
+        {
+          "token": "-o",
+          "meaning": "save under this name"
+        },
+        {
+          "token": "-s",
+          "meaning": "silent: no progress bar"
+        }
+      ],
+      "caution": "Never pipe a download straight into bash (curl … | bash) from a site you don't trust: read it first.",
+      "oftenWith": [
+        "wget",
+        "tar"
+      ],
+      "neededBy": [
+        "pacman",
+        "makepkg"
+      ]
+    },
+    {
+      "name": "wget",
+      "pkg": "wget",
+      "group": "Network",
+      "what": "Downloads files from the web, carrying on if the connection breaks.",
+      "usage": "wget <url>",
+      "words": [
+        "download",
+        "fetch",
+        "web",
+        "url",
+        "internet"
+      ],
+      "examples": [
+        {
+          "command": "wget -c https://example.com/big.iso",
+          "meaning": "downloads, picking up where a broken download stopped"
+        }
+      ],
+      "options": [
+        {
+          "token": "-c",
+          "meaning": "continue a half-done download"
+        }
+      ],
+      "oftenWith": [
+        "curl"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "ping",
+      "pkg": "iputils",
+      "group": "Network",
+      "what": "Checks whether another computer answers over the network, and how fast. Ctrl+C stops it.",
+      "usage": "ping [-c N] <address>",
+      "words": [
+        "network",
+        "internet",
+        "connection",
+        "online",
+        "test",
+        "reach"
+      ],
+      "examples": [
+        {
+          "command": "ping -c 3 archlinux.org",
+          "meaning": "three tries: is the internet there, and does name lookup work?"
+        }
+      ],
+      "options": [
+        {
+          "token": "-c",
+          "meaning": "stop after this many"
+        }
+      ],
+      "oftenWith": [
+        "ip",
+        "nmcli"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "ip",
+      "pkg": "iproute2",
+      "group": "Network",
+      "what": "Shows (and sets) your network: addresses, interfaces, routes.",
+      "usage": "ip <object> <command>",
+      "words": [
+        "network",
+        "address",
+        "ip",
+        "interface",
+        "wifi",
+        "ethernet",
+        "route"
+      ],
+      "examples": [
+        {
+          "command": "ip -br a",
+          "meaning": "each network interface with its address, one per line"
+        },
+        {
+          "command": "ip route",
+          "meaning": "where traffic goes (the default route is your router)"
+        }
+      ],
+      "options": [
+        {
+          "token": "-br",
+          "meaning": "brief: one line each"
+        }
+      ],
+      "oftenWith": [
+        "ping",
+        "ss",
+        "nmcli"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "ss",
+      "pkg": "iproute2",
+      "group": "Network",
+      "what": "Shows network connections and which programs listen on which ports.",
+      "usage": "ss [options]",
+      "words": [
+        "port",
+        "ports",
+        "listen",
+        "listening",
+        "connection",
+        "socket",
+        "open"
+      ],
+      "examples": [
+        {
+          "command": "ss -tulpn",
+          "meaning": "every port open for listening, with its program (sudo shows all programs)"
+        }
+      ],
+      "options": [
+        {
+          "token": "-t",
+          "meaning": "TCP"
+        },
+        {
+          "token": "-u",
+          "meaning": "UDP"
+        },
+        {
+          "token": "-l",
+          "meaning": "listening only"
+        },
+        {
+          "token": "-p",
+          "meaning": "with the program"
+        },
+        {
+          "token": "-n",
+          "meaning": "numbers, not names"
+        }
+      ],
+      "oftenWith": [
+        "ip",
+        "firewall-cmd"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "nmcli",
+      "pkg": "networkmanager",
+      "group": "Network",
+      "what": "NetworkManager from the terminal: Wi-Fi, connections, devices.",
+      "usage": "nmcli <object> <command>",
+      "words": [
+        "wifi",
+        "wireless",
+        "network",
+        "connect",
+        "connection",
+        "networkmanager"
+      ],
+      "examples": [
+        {
+          "command": "nmcli device wifi list",
+          "meaning": "the Wi-Fi networks around"
+        },
+        {
+          "command": "nmcli device wifi connect 'Name' --ask",
+          "meaning": "joins one, asking for its password"
+        }
+      ],
+      "options": [],
+      "oftenWith": [
+        "ip",
+        "ping"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "ssh",
+      "pkg": "openssh",
+      "group": "Network",
+      "what": "Opens a terminal on another computer, encrypted.",
+      "usage": "ssh [user@]<host>",
+      "words": [
+        "remote",
+        "server",
+        "connect",
+        "login",
+        "terminal",
+        "secure"
+      ],
+      "examples": [
+        {
+          "command": "ssh you@192.168.1.20",
+          "meaning": "logs in to that computer"
+        }
+      ],
+      "options": [
+        {
+          "token": "-p",
+          "meaning": "another port (-p 2222)"
+        },
+        {
+          "token": "-i",
+          "meaning": "this key file"
+        }
+      ],
+      "oftenWith": [
+        "scp",
+        "rsync"
+      ],
+      "neededBy": [
+        "git",
+        "scp",
+        "rsync"
+      ]
+    },
+    {
+      "name": "scp",
+      "pkg": "openssh",
+      "group": "Network",
+      "what": "Copies files to or from another computer over ssh.",
+      "usage": "scp <from> <to>",
+      "words": [
+        "copy",
+        "remote",
+        "transfer",
+        "server"
+      ],
+      "examples": [
+        {
+          "command": "scp notes.txt you@server:~/",
+          "meaning": "into your home folder over there"
+        }
+      ],
+      "options": [
+        {
+          "token": "-r",
+          "meaning": "folders and everything in them"
+        }
+      ],
+      "oftenWith": [
+        "ssh",
+        "rsync"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "rsync",
+      "pkg": "rsync",
+      "group": "Files and folders",
+      "what": "Copies folders efficiently: only what changed. For backups and big copies, here or to another computer.",
+      "usage": "rsync [options] <from> <to>",
+      "words": [
+        "sync",
+        "backup",
+        "copy",
+        "mirror",
+        "transfer"
+      ],
+      "examples": [
+        {
+          "command": "rsync -a --info=progress2 ~/Pictures/ /run/media/you/USB/Pictures/",
+          "meaning": "copies Pictures, only what changed since last time"
+        }
+      ],
+      "options": [
+        {
+          "token": "-a",
+          "meaning": "archive: everything kept as it is"
+        },
+        {
+          "token": "--delete",
+          "meaning": "also remove what is gone from the source — careful"
+        },
+        {
+          "token": "-n",
+          "meaning": "dry run: show, change nothing"
+        }
+      ],
+      "caution": "A slash at the end of the source matters: dir/ copies what is inside, dir copies the folder itself.",
+      "oftenWith": [
+        "cp",
+        "ssh"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "df",
+      "pkg": "coreutils",
+      "group": "System",
+      "what": "Shows how full each disk is.",
+      "usage": "df [-h]",
+      "words": [
+        "disk",
+        "space",
+        "free",
+        "full",
+        "storage",
+        "usage"
+      ],
+      "examples": [
+        {
+          "command": "df -h",
+          "meaning": "every disk with its size, used and free space in G and M"
+        }
+      ],
+      "options": [
+        {
+          "token": "-h",
+          "meaning": "sizes people can read"
+        }
+      ],
+      "oftenWith": [
+        "du",
+        "lsblk"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "du",
+      "pkg": "coreutils",
+      "group": "System",
+      "what": "Shows how much space folders and files take.",
+      "usage": "du [options] [folder]",
+      "words": [
+        "disk",
+        "space",
+        "size",
+        "folder",
+        "directory",
+        "usage",
+        "big"
+      ],
+      "examples": [
+        {
+          "command": "du -sh ~/* | sort -h",
+          "meaning": "your home's folders, smallest to largest"
+        }
+      ],
+      "options": [
+        {
+          "token": "-s",
+          "meaning": "summary: one total each"
+        },
+        {
+          "token": "-h",
+          "meaning": "sizes people can read"
+        }
+      ],
+      "oftenWith": [
+        "df",
+        "sort"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "free",
+      "pkg": "procps-ng",
+      "group": "System",
+      "what": "Shows memory: used, free, and available (what programs can still get).",
+      "usage": "free [-h]",
+      "words": [
+        "memory",
+        "ram",
+        "swap",
+        "free",
+        "used"
+      ],
+      "examples": [
+        {
+          "command": "free -h",
+          "meaning": "memory and swap in G and M"
+        }
+      ],
+      "options": [
+        {
+          "token": "-h",
+          "meaning": "sizes people can read"
+        }
+      ],
+      "oftenWith": [
+        "top",
+        "ps"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "lsblk",
+      "pkg": "util-linux",
+      "group": "System",
+      "what": "Lists disks and their partitions, with where each is mounted.",
+      "usage": "lsblk [options]",
+      "words": [
+        "disk",
+        "disks",
+        "partition",
+        "drive",
+        "usb",
+        "ssd",
+        "mount"
+      ],
+      "examples": [
+        {
+          "command": "lsblk -f",
+          "meaning": "with each partition's filesystem and label"
+        }
+      ],
+      "options": [
+        {
+          "token": "-f",
+          "meaning": "filesystems, labels and UUIDs"
+        }
+      ],
+      "oftenWith": [
+        "df",
+        "mount"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "mount",
+      "pkg": "util-linux",
+      "group": "System",
+      "what": "Attaches a disk's filesystem at a folder, so its files appear there. Without arguments, lists what is mounted.",
+      "usage": "sudo mount <device> <folder>",
+      "words": [
+        "mount",
+        "attach",
+        "disk",
+        "usb",
+        "drive",
+        "partition"
+      ],
+      "examples": [
+        {
+          "command": "sudo mount /dev/sdb1 /mnt",
+          "meaning": "the USB stick's first partition, at /mnt"
+        }
+      ],
+      "options": [],
+      "oftenWith": [
+        "umount",
+        "lsblk"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "umount",
+      "pkg": "util-linux",
+      "group": "System",
+      "what": "Detaches a mounted disk (do it before pulling a USB stick out).",
+      "usage": "sudo umount <folder or device>",
+      "words": [
+        "unmount",
+        "eject",
+        "detach",
+        "usb",
+        "disk"
+      ],
+      "examples": [
+        {
+          "command": "sudo umount /mnt",
+          "meaning": "safe to unplug once it returns"
+        }
+      ],
+      "options": [],
+      "oftenWith": [
+        "mount",
+        "lsblk"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "ps",
+      "pkg": "procps-ng",
+      "group": "Programs running",
+      "what": "Lists running programs (processes) with their numbers (PIDs).",
+      "usage": "ps [options]",
+      "words": [
+        "process",
+        "processes",
+        "running",
+        "program",
+        "pid",
+        "list"
+      ],
+      "examples": [
+        {
+          "command": "ps aux | grep firefox",
+          "meaning": "Firefox's processes and their numbers"
+        }
+      ],
+      "options": [
+        {
+          "token": "aux",
+          "meaning": "every process of every user, with details"
+        }
+      ],
+      "oftenWith": [
+        "grep",
+        "kill",
+        "top"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "top",
+      "pkg": "procps-ng",
+      "group": "Programs running",
+      "what": "Shows running programs live, the busiest first. q quits.",
+      "usage": "top",
+      "words": [
+        "process",
+        "cpu",
+        "memory",
+        "busy",
+        "slow",
+        "running",
+        "monitor",
+        "task manager"
+      ],
+      "examples": [
+        {
+          "command": "top",
+          "meaning": "what is using the computer right now"
+        }
+      ],
+      "options": [],
+      "oftenWith": [
+        "kill",
+        "free",
+        "ps"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "kill",
+      "pkg": "util-linux",
+      "group": "Programs running",
+      "what": "Sends a signal to a program by its number: asks it to stop (the default), or forces it (-9).",
+      "usage": "kill [-signal] <pid>",
+      "words": [
+        "stop",
+        "end",
+        "close",
+        "quit",
+        "frozen",
+        "force",
+        "process"
+      ],
+      "examples": [
+        {
+          "command": "kill 1234",
+          "meaning": "asks process 1234 to stop"
+        },
+        {
+          "command": "kill -9 1234",
+          "meaning": "forces it, when it does not answer"
+        }
+      ],
+      "options": [
+        {
+          "token": "-9",
+          "meaning": "SIGKILL: stop at once, no cleanup"
+        },
+        {
+          "token": "-15",
+          "meaning": "SIGTERM: ask to stop (the default)"
+        }
+      ],
+      "oftenWith": [
+        "ps",
+        "pkill",
+        "top"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "pkill",
+      "pkg": "procps-ng",
+      "group": "Programs running",
+      "what": "Stops programs by name instead of by number.",
+      "usage": "pkill [options] <name>",
+      "words": [
+        "stop",
+        "kill",
+        "close",
+        "name",
+        "process"
+      ],
+      "examples": [
+        {
+          "command": "pkill firefox",
+          "meaning": "asks every Firefox process to stop"
+        }
+      ],
+      "options": [
+        {
+          "token": "-9",
+          "meaning": "force"
+        }
+      ],
+      "oftenWith": [
+        "kill",
+        "ps"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "killall",
+      "pkg": "psmisc",
+      "group": "Programs running",
+      "what": "Stops every program with exactly this name.",
+      "usage": "killall <name>",
+      "words": [
+        "stop",
+        "kill",
+        "close",
+        "all",
+        "name"
+      ],
+      "examples": [
+        {
+          "command": "killall plasmashell",
+          "meaning": "stops KDE's desktop shell (start it again with plasmashell &)"
+        }
+      ],
+      "options": [],
+      "oftenWith": [
+        "pkill",
+        "kill"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "uname",
+      "pkg": "coreutils",
+      "group": "System",
+      "what": "Prints the kernel's name and version.",
+      "usage": "uname [-r|-a]",
+      "words": [
+        "kernel",
+        "version",
+        "system",
+        "linux"
+      ],
+      "examples": [
+        {
+          "command": "uname -r",
+          "meaning": "the running kernel's version"
+        }
+      ],
+      "options": [
+        {
+          "token": "-r",
+          "meaning": "kernel release"
+        },
+        {
+          "token": "-a",
+          "meaning": "everything"
+        }
+      ],
+      "oftenWith": [
+        "pacman"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "uptime",
+      "pkg": "procps-ng",
+      "group": "System",
+      "what": "How long the computer has been on, and how busy it has been.",
+      "usage": "uptime",
+      "words": [
+        "uptime",
+        "running",
+        "since",
+        "boot",
+        "load"
+      ],
+      "examples": [
+        {
+          "command": "uptime -p",
+          "meaning": "for example: up 2 days, 3 hours"
+        }
+      ],
+      "options": [
+        {
+          "token": "-p",
+          "meaning": "pretty: in words"
+        }
+      ],
+      "oftenWith": [
+        "top"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "dmesg",
+      "pkg": "util-linux",
+      "group": "System",
+      "what": "The kernel's own messages: hardware found, drivers, errors.",
+      "usage": "sudo dmesg [options]",
+      "words": [
+        "kernel",
+        "hardware",
+        "driver",
+        "error",
+        "log",
+        "boot"
+      ],
+      "examples": [
+        {
+          "command": "sudo dmesg -H --level=err,warn",
+          "meaning": "only errors and warnings, readable"
+        }
+      ],
+      "options": [
+        {
+          "token": "-H",
+          "meaning": "human-readable, paged"
+        },
+        {
+          "token": "-w",
+          "meaning": "follow new messages"
+        }
+      ],
+      "oftenWith": [
+        "journalctl",
+        "lsusb",
+        "lspci"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "lspci",
+      "pkg": "pciutils",
+      "group": "System",
+      "what": "Lists the hardware inside: graphics card, network card, controllers.",
+      "usage": "lspci [-k]",
+      "words": [
+        "hardware",
+        "graphics",
+        "gpu",
+        "card",
+        "device",
+        "driver"
+      ],
+      "examples": [
+        {
+          "command": "lspci -k | grep -A3 -E 'VGA|3D'",
+          "meaning": "your graphics card and the driver it uses"
+        }
+      ],
+      "options": [
+        {
+          "token": "-k",
+          "meaning": "with each device's driver"
+        }
+      ],
+      "oftenWith": [
+        "lsusb",
+        "dmesg"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "lsusb",
+      "pkg": "usbutils",
+      "group": "System",
+      "what": "Lists what is plugged into USB.",
+      "usage": "lsusb",
+      "words": [
+        "usb",
+        "device",
+        "plugged",
+        "hardware"
+      ],
+      "examples": [
+        {
+          "command": "lsusb",
+          "meaning": "each USB device with its maker and model"
+        }
+      ],
+      "options": [],
+      "oftenWith": [
+        "lspci",
+        "dmesg"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "timedatectl",
+      "pkg": "systemd",
+      "group": "System",
+      "what": "Shows and sets the clock, the time zone, and time sync from the internet.",
+      "usage": "timedatectl [command]",
+      "words": [
+        "time",
+        "clock",
+        "date",
+        "timezone",
+        "ntp",
+        "sync"
+      ],
+      "examples": [
+        {
+          "command": "timedatectl",
+          "meaning": "the time, time zone, and whether it syncs"
+        },
+        {
+          "command": "sudo timedatectl set-ntp true",
+          "meaning": "keep the clock right from the internet"
+        }
+      ],
+      "options": [],
+      "oftenWith": [
+        "systemctl"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "reboot",
+      "pkg": "systemd-sysvcompat",
+      "group": "System",
+      "what": "Restarts the computer.",
+      "usage": "reboot",
+      "words": [
+        "restart",
+        "reboot",
+        "boot"
+      ],
+      "examples": [
+        {
+          "command": "reboot",
+          "meaning": "after a kernel update, so the new one runs"
+        }
+      ],
+      "options": [],
+      "oftenWith": [
+        "poweroff"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "poweroff",
+      "pkg": "systemd-sysvcompat",
+      "group": "System",
+      "what": "Shuts the computer down.",
+      "usage": "poweroff",
+      "words": [
+        "shutdown",
+        "shut down",
+        "turn off",
+        "power"
+      ],
+      "examples": [
+        {
+          "command": "poweroff",
+          "meaning": "turns it off"
+        }
+      ],
+      "options": [],
+      "oftenWith": [
+        "reboot"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "man",
+      "pkg": "man-db",
+      "group": "Help",
+      "what": "Opens a command's manual: everything it can do. Space goes on, / searches, q quits.",
+      "usage": "man <command>",
+      "words": [
+        "help",
+        "manual",
+        "documentation",
+        "how",
+        "explain"
+      ],
+      "examples": [
+        {
+          "command": "man pacman",
+          "meaning": "pacman's whole manual"
+        }
+      ],
+      "options": [
+        {
+          "token": "-k",
+          "meaning": "search every manual's title for a word"
+        }
+      ],
+      "oftenWith": [
+        "less"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "pacman",
+      "pkg": "pacman",
+      "group": "Packages",
+      "what": "Arch's package manager: installs, updates and removes software from the official repositories.",
+      "usage": "pacman <operation> [options] [packages]",
+      "words": [
+        "package",
+        "install",
+        "update",
+        "upgrade",
+        "remove",
+        "software",
+        "app",
+        "repository"
+      ],
+      "examples": [
+        {
+          "command": "sudo pacman -Syu",
+          "meaning": "update everything"
+        },
+        {
+          "command": "sudo pacman -Syu --needed firefox",
+          "meaning": "install Firefox"
+        },
+        {
+          "command": "sudo pacman -Rns firefox",
+          "meaning": "remove it, with what only it needed"
+        }
+      ],
+      "options": [],
+      "oftenWith": [
+        "sudo",
+        "yay",
+        "paccache"
+      ],
+      "neededBy": [
+        "yay",
+        "makepkg"
+      ]
+    },
+    {
+      "name": "yay",
+      "pkg": "yay (AUR)",
+      "group": "Packages",
+      "what": "An AUR helper: installs packages from the AUR (made by people, not checked by Arch) as well as from the repositories. Run it without sudo.",
+      "usage": "yay [options] [packages]",
+      "words": [
+        "aur",
+        "package",
+        "install",
+        "update",
+        "helper"
+      ],
+      "examples": [
+        {
+          "command": "yay -Syu",
+          "meaning": "update everything, AUR packages too"
+        },
+        {
+          "command": "yay -Syu --needed brave-bin",
+          "meaning": "install from the AUR (read its build script when asked)"
+        }
+      ],
+      "options": [],
+      "caution": "AUR packages are made by people, not checked by Arch: read the build script yay shows.",
+      "oftenWith": [
+        "pacman",
+        "makepkg"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "makepkg",
+      "pkg": "pacman",
+      "group": "Packages",
+      "what": "Builds a package from a PKGBUILD (the recipe in an AUR folder). Never with sudo.",
+      "usage": "makepkg [options]",
+      "words": [
+        "build",
+        "package",
+        "pkgbuild",
+        "aur",
+        "compile"
+      ],
+      "examples": [
+        {
+          "command": "makepkg -si",
+          "meaning": "builds the package here, installs it and its dependencies"
+        }
+      ],
+      "options": [
+        {
+          "token": "-s",
+          "meaning": "install missing dependencies (with pacman)"
+        },
+        {
+          "token": "-i",
+          "meaning": "install the package once built"
+        },
+        {
+          "token": "-c",
+          "meaning": "clean up the build files afterwards"
+        }
+      ],
+      "oftenWith": [
+        "git",
+        "pacman"
+      ],
+      "neededBy": [
+        "yay"
+      ]
+    },
+    {
+      "name": "paccache",
+      "pkg": "pacman-contrib",
+      "group": "Packages",
+      "what": "Cleans pacman's cache of downloaded packages, keeping a few versions to go back to.",
+      "usage": "sudo paccache -r[k N]",
+      "words": [
+        "cache",
+        "clean",
+        "space",
+        "free",
+        "old",
+        "packages"
+      ],
+      "examples": [
+        {
+          "command": "sudo paccache -rk2",
+          "meaning": "keep the two newest versions of each package"
+        },
+        {
+          "command": "sudo paccache -ruk0",
+          "meaning": "remove every cached version of packages no longer installed"
+        }
+      ],
+      "options": [
+        {
+          "token": "-r",
+          "meaning": "remove"
+        },
+        {
+          "token": "-k",
+          "meaning": "how many versions to keep"
+        },
+        {
+          "token": "-u",
+          "meaning": "only packages no longer installed"
+        },
+        {
+          "token": "-d",
+          "meaning": "dry run: show what would go"
+        }
+      ],
+      "oftenWith": [
+        "pacman",
+        "du"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "pacdiff",
+      "pkg": "pacman-contrib",
+      "group": "Packages",
+      "what": "Finds the .pacnew files updates left beside your settings files, and helps merge them: view, merge, keep or remove each.",
+      "usage": "sudo pacdiff",
+      "words": [
+        "pacnew",
+        "pacsave",
+        "config",
+        "merge",
+        "update",
+        "settings"
+      ],
+      "examples": [
+        {
+          "command": "sudo pacdiff",
+          "meaning": "goes through each waiting .pacnew with you"
+        }
+      ],
+      "options": [
+        {
+          "token": "-o",
+          "meaning": "only list them"
+        }
+      ],
+      "oftenWith": [
+        "diff",
+        "pacman"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "reflector",
+      "pkg": "reflector",
+      "group": "Packages",
+      "what": "Picks fast, up-to-date Arch mirrors (the servers packages come from) and writes them into pacman's mirror list.",
+      "usage": "sudo reflector [options] --save /etc/pacman.d/mirrorlist",
+      "words": [
+        "mirror",
+        "mirrors",
+        "fast",
+        "download",
+        "server",
+        "speed"
+      ],
+      "examples": [
+        {
+          "command": "sudo reflector --latest 10 --sort rate --save /etc/pacman.d/mirrorlist",
+          "meaning": "the 10 most recent mirrors, fastest first"
+        }
+      ],
+      "options": [
+        {
+          "token": "--latest",
+          "meaning": "only the N most recently synced"
+        },
+        {
+          "token": "--sort",
+          "meaning": "by rate (speed), age, score…"
+        },
+        {
+          "token": "--country",
+          "meaning": "only these countries"
+        },
+        {
+          "token": "--save",
+          "meaning": "write the list here"
+        }
+      ],
+      "oftenWith": [
+        "pacman"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "mkinitcpio",
+      "pkg": "mkinitcpio",
+      "group": "Packages",
+      "what": "Builds the initramfs: the small image the kernel starts from, before your disks are opened.",
+      "usage": "sudo mkinitcpio -P",
+      "words": [
+        "initramfs",
+        "boot",
+        "kernel",
+        "image",
+        "rebuild"
+      ],
+      "examples": [
+        {
+          "command": "sudo mkinitcpio -P",
+          "meaning": "rebuild it for every installed kernel (after changing /etc/mkinitcpio.conf)"
+        }
+      ],
+      "options": [
+        {
+          "token": "-P",
+          "meaning": "every preset: all installed kernels"
+        }
+      ],
+      "oftenWith": [
+        "pacman"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "flatpak",
+      "pkg": "flatpak",
+      "group": "Packages",
+      "what": "Installs and runs Flatpak apps (from Flathub), each in its own sandbox.",
+      "usage": "flatpak <command> [options]",
+      "words": [
+        "flatpak",
+        "flathub",
+        "app",
+        "install",
+        "sandbox"
+      ],
+      "examples": [
+        {
+          "command": "flatpak install flathub org.kde.krita",
+          "meaning": "install Krita from Flathub"
+        },
+        {
+          "command": "flatpak update",
+          "meaning": "update every Flatpak app"
+        },
+        {
+          "command": "flatpak uninstall --unused",
+          "meaning": "remove runtimes no app uses"
+        }
+      ],
+      "options": [],
+      "oftenWith": [
+        "pacman"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "systemctl",
+      "pkg": "systemd",
+      "group": "Services",
+      "what": "Controls services (programs systemd runs in the background): start, stop, switch on at boot, see their state.",
+      "usage": "systemctl <command> <unit>",
+      "words": [
+        "service",
+        "daemon",
+        "start",
+        "stop",
+        "enable",
+        "disable",
+        "boot",
+        "status"
+      ],
+      "examples": [
+        {
+          "command": "systemctl status bluetooth",
+          "meaning": "is it running, with its last log lines"
+        },
+        {
+          "command": "sudo systemctl enable --now bluetooth",
+          "meaning": "start it now and at every boot"
+        },
+        {
+          "command": "systemctl --failed",
+          "meaning": "what failed"
+        }
+      ],
+      "options": [],
+      "oftenWith": [
+        "journalctl",
+        "sudo"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "journalctl",
+      "pkg": "systemd",
+      "group": "Services",
+      "what": "Reads the system's log: what services, the kernel and programs wrote.",
+      "usage": "journalctl [options]",
+      "words": [
+        "log",
+        "logs",
+        "error",
+        "journal",
+        "boot",
+        "why"
+      ],
+      "examples": [
+        {
+          "command": "journalctl -p err -b",
+          "meaning": "only errors since this boot"
+        },
+        {
+          "command": "journalctl -u bluetooth -f",
+          "meaning": "one service's log, live"
+        }
+      ],
+      "options": [],
+      "oftenWith": [
+        "systemctl",
+        "grep",
+        "less"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "git",
+      "pkg": "git",
+      "group": "Development",
+      "what": "Keeps the history of a project's files, and downloads (clones) projects from GitHub, GitLab and the AUR.",
+      "usage": "git <command> [options]",
+      "words": [
+        "git",
+        "clone",
+        "repository",
+        "repo",
+        "version",
+        "github",
+        "commit",
+        "source"
+      ],
+      "examples": [
+        {
+          "command": "git clone https://aur.archlinux.org/yay-bin.git",
+          "meaning": "downloads an AUR package's folder"
+        },
+        {
+          "command": "git pull",
+          "meaning": "brings a clone up to date"
+        }
+      ],
+      "options": [],
+      "oftenWith": [
+        "makepkg",
+        "ssh"
+      ],
+      "neededBy": [
+        "yay",
+        "makepkg"
+      ]
+    },
+    {
+      "name": "firewall-cmd",
+      "pkg": "firewalld",
+      "group": "Security",
+      "what": "Controls firewalld, the firewall: which services and ports may be reached from the network.",
+      "usage": "sudo firewall-cmd [options]",
+      "words": [
+        "firewall",
+        "port",
+        "block",
+        "allow",
+        "open",
+        "security",
+        "zone"
+      ],
+      "examples": [
+        {
+          "command": "sudo firewall-cmd --list-all",
+          "meaning": "what the active zone lets in"
+        },
+        {
+          "command": "sudo firewall-cmd --permanent --remove-service=ssh && sudo firewall-cmd --reload",
+          "meaning": "closes SSH, for good"
+        }
+      ],
+      "options": [
+        {
+          "token": "--list-all",
+          "meaning": "everything the zone allows"
+        },
+        {
+          "token": "--permanent",
+          "meaning": "change the saved settings (then --reload)"
+        },
+        {
+          "token": "--reload",
+          "meaning": "use the saved settings now"
+        }
+      ],
+      "oftenWith": [
+        "ss",
+        "systemctl"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "nft",
+      "pkg": "nftables",
+      "group": "Security",
+      "what": "The kernel's own firewall rules, written directly (firewalld writes them for you).",
+      "usage": "sudo nft <command>",
+      "words": [
+        "firewall",
+        "rules",
+        "nftables",
+        "packet"
+      ],
+      "examples": [
+        {
+          "command": "sudo nft list ruleset",
+          "meaning": "every rule there is now"
+        }
+      ],
+      "options": [
+        {
+          "token": "-f",
+          "meaning": "load rules from a file"
+        }
+      ],
+      "oftenWith": [
+        "firewall-cmd"
+      ],
+      "neededBy": [
+        "firewall-cmd"
+      ]
+    },
+    {
+      "name": "snapper",
+      "pkg": "snapper",
+      "group": "Safety",
+      "what": "Takes and lists snapshots of a Btrfs filesystem: the state of your system at a moment, to go back to.",
+      "usage": "sudo snapper [-c config] <command>",
+      "words": [
+        "snapshot",
+        "snapshots",
+        "backup",
+        "restore",
+        "undo",
+        "btrfs",
+        "go back"
+      ],
+      "examples": [
+        {
+          "command": "sudo snapper list",
+          "meaning": "the snapshots of / (snap-pac takes one before and after each pacman run)"
+        },
+        {
+          "command": "sudo snapper create -d 'before trying things'",
+          "meaning": "one now, with a note"
+        }
+      ],
+      "options": [
+        {
+          "token": "-c",
+          "meaning": "which configuration (root, home…)"
+        }
+      ],
+      "oftenWith": [
+        "pacman"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "docker",
+      "pkg": "docker",
+      "group": "Development",
+      "what": "Runs apps in containers: each with what it needs, apart from the system.",
+      "usage": "docker <command> [options]",
+      "words": [
+        "container",
+        "docker",
+        "image",
+        "compose"
+      ],
+      "examples": [
+        {
+          "command": "docker ps",
+          "meaning": "the containers running"
+        },
+        {
+          "command": "docker compose up -d",
+          "meaning": "starts the app described in compose.yaml here"
+        }
+      ],
+      "options": [],
+      "oftenWith": [
+        "systemctl",
+        "usermod"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "ollama",
+      "pkg": "ollama",
+      "group": "Development",
+      "what": "Runs AI language models on your own computer.",
+      "usage": "ollama <command> [model]",
+      "words": [
+        "ai",
+        "model",
+        "llm",
+        "chat",
+        "local"
+      ],
+      "examples": [
+        {
+          "command": "ollama pull llama3.2:3b",
+          "meaning": "downloads a model"
+        },
+        {
+          "command": "ollama run llama3.2:3b",
+          "meaning": "chats with it in the terminal"
+        }
+      ],
+      "options": [],
+      "oftenWith": [
+        "systemctl"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "torsocks",
+      "pkg": "torsocks",
+      "group": "Security",
+      "what": "Sends one terminal program's connections through the Tor service.",
+      "usage": "torsocks <command>",
+      "words": [
+        "tor",
+        "anonymous",
+        "proxy",
+        "privacy"
+      ],
+      "examples": [
+        {
+          "command": "torsocks curl https://check.torproject.org/api/ip",
+          "meaning": "IsTor:true means it went through Tor"
+        }
+      ],
+      "options": [],
+      "oftenWith": [
+        "curl",
+        "systemctl"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "stat",
+      "pkg": "coreutils",
+      "group": "System",
+      "what": "Shows a file's metadata: size, permissions, owner, dates, file type — in one block.",
+      "usage": "stat [options] <file>…",
+      "words": [
+        "file",
+        "metadata",
+        "size",
+        "permissions",
+        "owner",
+        "date",
+        "info",
+        "details"
+      ],
+      "examples": [
+        {
+          "command": "stat ~/notes.txt",
+          "meaning": "size, blocks, permissions, owner, dates, file type"
+        },
+        {
+          "command": "stat -c '%n %s %y' ~/.bashrc",
+          "meaning": "name, size in bytes, last modified — in a custom format"
+        }
+      ],
+      "options": [
+        {
+          "token": "-c",
+          "meaning": "format: a custom string (%n name, %s size, %y mtime, %F type, %U owner, %G group)"
+        },
+        {
+          "token": "-f",
+          "meaning": "filesystem status (free/total blocks, type) instead of a file"
+        },
+        {
+          "token": "-L",
+          "meaning": "follow a symlink: stat what it points at"
+        },
+        {
+          "token": "-t",
+          "meaning": "terse: a single line, machine-readable"
+        }
+      ],
+      "oftenWith": [
+        "ls",
+        "file",
+        "du"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "dd",
+      "pkg": "coreutils",
+      "group": "System",
+      "what": "Copies raw bytes between files and devices — the classic way to write an ISO to a USB stick.",
+      "usage": "dd if=<from> of=<to> [bs=<size>] [count=<n>]",
+      "words": [
+        "copy",
+        "raw",
+        "bytes",
+        "iso",
+        "usb",
+        "write",
+        "image",
+        "clone"
+      ],
+      "examples": [
+        {
+          "command": "sudo dd if=archlinux.iso of=/dev/sdb bs=4M status=progress",
+          "meaning": "writes the Arch installer ISO to a USB stick (the whole device, not a partition)"
+        },
+        {
+          "command": "dd if=/dev/zero of=blank.img bs=1M count=100",
+          "meaning": "a 100 MB file of zeros"
+        }
+      ],
+      "options": [
+        {
+          "token": "if=",
+          "meaning": "input file (the source)"
+        },
+        {
+          "token": "of=",
+          "meaning": "output file (the destination)"
+        },
+        {
+          "token": "bs=",
+          "meaning": "block size: how many bytes to read/write at a time (e.g. 4M)"
+        },
+        {
+          "token": "count=",
+          "meaning": "how many blocks to copy"
+        },
+        {
+          "token": "status=",
+          "meaning": "progress reporting: none / noxfer / progress"
+        },
+        {
+          "token": "conv=",
+          "meaning": "conversions: noerror (continue on read errors), sync (pad), notrunc (don't truncate output)"
+        }
+      ],
+      "caution": "dd writes raw bytes — point of= at the wrong device and you erase it. Check lsblk twice first.",
+      "oftenWith": [
+        "lsblk",
+        "cp",
+        "cat"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "fsck",
+      "pkg": "util-linux",
+      "group": "System",
+      "what": "Checks and repairs a filesystem for errors — run when a partition won't mount or after a crash. Only on a filesystem that is NOT mounted (a USB stick you unplugged from the file manager, or from a live USB): repairing a mounted one can wreck it. On btrfs (CachyOS's default) fsck does nothing — btrfs check is its checker.",
+      "usage": "sudo fsck [options] <device>",
+      "words": [
+        "check",
+        "repair",
+        "fix",
+        "filesystem",
+        "error",
+        "corrupt",
+        "disk"
+      ],
+      "examples": [
+        {
+          "command": "sudo fsck /dev/sdb1",
+          "meaning": "checks the USB stick's first partition (unmount it first)"
+        },
+        {
+          "command": "sudo fsck -n /dev/sdb1",
+          "meaning": "only looks: reports problems on the (unmounted) USB stick and changes nothing"
+        }
+      ],
+      "options": [
+        {
+          "token": "-A",
+          "meaning": "check all filesystems in /etc/fstab"
+        },
+        {
+          "token": "-a",
+          "meaning": "automatically repair (don't ask) (for ext4: fsck passes it on to e2fsck)"
+        },
+        {
+          "token": "-y",
+          "meaning": "answer yes to every repair question (for ext4: fsck passes it on to e2fsck)"
+        },
+        {
+          "token": "-n",
+          "meaning": "answer no: check only, change nothing (for ext4: fsck passes it on to e2fsck)"
+        },
+        {
+          "token": "-f",
+          "meaning": "force a check even if the filesystem looks clean (for ext4: fsck passes it on to e2fsck)"
+        },
+        {
+          "token": "-c",
+          "meaning": "scan for bad blocks (slow) (for ext4: fsck passes it on to e2fsck)"
+        }
+      ],
+      "caution": "Unmount the filesystem before checking it. fsck on a mounted filesystem can corrupt it.",
+      "oftenWith": [
+        "mount",
+        "umount",
+        "lsblk"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "smartctl",
+      "pkg": "smartmontools",
+      "group": "System",
+      "what": "Reads SMART health data from a disk — early-warning signs of failure, temperature, run hours.",
+      "usage": "sudo smartctl [options] <device>",
+      "words": [
+        "smart",
+        "disk",
+        "health",
+        "ssd",
+        "hdd",
+        "temperature",
+        "failure",
+        "predict"
+      ],
+      "examples": [
+        {
+          "command": "sudo smartctl -a /dev/sda",
+          "meaning": "everything SMART knows about the first disk"
+        },
+        {
+          "command": "sudo smartctl -H /dev/nvme0",
+          "meaning": "just the pass/fail health verdict"
+        }
+      ],
+      "options": [
+        {
+          "token": "-a",
+          "meaning": "all: every SMART attribute and log"
+        },
+        {
+          "token": "-H",
+          "meaning": "health: just the pass/fail verdict"
+        },
+        {
+          "token": "-A",
+          "meaning": "attributes: the table of values (raw, normalised, worst, threshold)"
+        },
+        {
+          "token": "-t",
+          "meaning": "run a test: short, long, offline"
+        },
+        {
+          "token": "-d",
+          "meaning": "device type: ata, scsi, nvme (auto-detected usually)"
+        }
+      ],
+      "oftenWith": [
+        "lsblk",
+        "df",
+        "dmesg"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "lscpu",
+      "pkg": "util-linux",
+      "group": "System",
+      "what": "Prints the CPU's architecture: model, cores, threads, cache, flags, virtualisation features.",
+      "usage": "lscpu [options]",
+      "words": [
+        "cpu",
+        "processor",
+        "cores",
+        "threads",
+        "architecture",
+        "model",
+        "flags"
+      ],
+      "examples": [
+        {
+          "command": "lscpu",
+          "meaning": "the CPU's model, core count, cache size, and feature flags"
+        },
+        {
+          "command": "lscpu -e",
+          "meaning": "one line per CPU (core, socket, die, cache) — good for scripts"
+        }
+      ],
+      "options": [
+        {
+          "token": "-e",
+          "meaning": "extended: one line per logical CPU"
+        },
+        {
+          "token": "-J",
+          "meaning": "JSON output for scripts"
+        },
+        {
+          "token": "-p",
+          "meaning": "parsable: a single line of comma-separated values"
+        }
+      ],
+      "oftenWith": [
+        "free",
+        "lspci",
+        "uname"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "lsmod",
+      "pkg": "kmod",
+      "group": "System",
+      "what": "Lists the kernel modules currently loaded (drivers, filesystems, crypto).",
+      "usage": "lsmod",
+      "words": [
+        "kernel",
+        "module",
+        "modules",
+        "driver",
+        "loaded",
+        "kmod"
+      ],
+      "examples": [
+        {
+          "command": "lsmod | head",
+          "meaning": "the first ten loaded modules"
+        },
+        {
+          "command": "lsmod | grep -i video",
+          "meaning": "is a video driver module loaded?"
+        }
+      ],
+      "options": [],
+      "oftenWith": [
+        "modprobe",
+        "dmesg",
+        "lspci"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "modprobe",
+      "pkg": "kmod",
+      "group": "System",
+      "what": "Loads or unloads a kernel module (driver) by name.",
+      "usage": "sudo modprobe <module>",
+      "words": [
+        "load",
+        "unload",
+        "kernel",
+        "module",
+        "driver",
+        "insert",
+        "remove"
+      ],
+      "examples": [
+        {
+          "command": "sudo modprobe snd_hda_intel",
+          "meaning": "loads the Intel HDA sound driver"
+        },
+        {
+          "command": "sudo modprobe -r uvcvideo",
+          "meaning": "unloads the webcam driver"
+        }
+      ],
+      "options": [
+        {
+          "token": "-r",
+          "meaning": "remove: unload the module"
+        },
+        {
+          "token": "-n, --dry-run",
+          "meaning": "dry run: say what it would do, change nothing"
+        },
+        {
+          "token": "-c",
+          "meaning": "show the whole module configuration (every alias, option and blacklist)"
+        },
+        {
+          "token": "-v",
+          "meaning": "verbose: say what it's doing"
+        }
+      ],
+      "oftenWith": [
+        "lsmod",
+        "dmesg",
+        "lspci"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "sensors",
+      "pkg": "lm_sensors",
+      "group": "System",
+      "what": "Reads temperature, fan and voltage sensors from the motherboard and CPU.",
+      "usage": "sensors [options]",
+      "words": [
+        "temperature",
+        "temp",
+        "fan",
+        "voltage",
+        "sensors",
+        "hwmon",
+        "hot"
+      ],
+      "examples": [
+        {
+          "command": "sensors",
+          "meaning": "every sensor reading — CPU temp, fan RPM, voltages"
+        },
+        {
+          "command": "sensors -j",
+          "meaning": "JSON output, for scripts and dashboards"
+        }
+      ],
+      "options": [
+        {
+          "token": "-j",
+          "meaning": "JSON output"
+        },
+        {
+          "token": "-f",
+          "meaning": "fahrenheit instead of celsius"
+        },
+        {
+          "token": "-A",
+          "meaning": "hide the adapter name"
+        },
+        {
+          "token": "-u",
+          "meaning": "unknown: show raw readings for unsupported chips"
+        }
+      ],
+      "caution": "First time? Run sudo sensors-detect once so it learns which chips you have.",
+      "oftenWith": [
+        "lscpu",
+        "lspci",
+        "top"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "coredumpctl",
+      "pkg": "systemd",
+      "group": "System",
+      "what": "Lists and inspects core dumps — what crashed, when, and what to feed a debugger.",
+      "usage": "coredumpctl [options] [command]",
+      "words": [
+        "core",
+        "dump",
+        "crash",
+        "segfault",
+        "debug",
+        "stacktrace"
+      ],
+      "examples": [
+        {
+          "command": "coredumpctl list",
+          "meaning": "every crash the system recorded, newest last"
+        },
+        {
+          "command": "coredumpctl info",
+          "meaning": "details of the most recent crash"
+        },
+        {
+          "command": "coredumpctl debug",
+          "meaning": "start gdb on the most recent core dump"
+        }
+      ],
+      "options": [
+        {
+          "token": "list",
+          "meaning": "list coredumps (the default)"
+        },
+        {
+          "token": "info",
+          "meaning": "show detailed info about a coredump"
+        },
+        {
+          "token": "dump",
+          "meaning": "print the core to stdout (pipe to a file)"
+        },
+        {
+          "token": "debug",
+          "meaning": "open a debugger (gdb) on the coredump"
+        },
+        {
+          "token": "-1",
+          "meaning": "operate only on the most recent coredump"
+        }
+      ],
+      "oftenWith": [
+        "journalctl",
+        "systemctl"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "systemd-analyze",
+      "pkg": "systemd",
+      "group": "System",
+      "what": "Profiles systemd: boot time, the time-critical chain, unit security, calendar expressions.",
+      "usage": "systemd-analyze [options] <command>",
+      "words": [
+        "boot",
+        "time",
+        "blame",
+        "critical",
+        "chain",
+        "security",
+        "plot",
+        "profile"
+      ],
+      "examples": [
+        {
+          "command": "systemd-analyze time",
+          "meaning": "how long the boot took (firmware + loader + kernel + userspace)"
+        },
+        {
+          "command": "systemd-analyze blame",
+          "meaning": "every unit sorted by how long it took to start"
+        },
+        {
+          "command": "systemd-analyze critical-chain",
+          "meaning": "the tree of units that gated boot"
+        }
+      ],
+      "options": [
+        {
+          "token": "time",
+          "meaning": "print boot time (default)"
+        },
+        {
+          "token": "blame",
+          "meaning": "units sorted by start time"
+        },
+        {
+          "token": "critical-chain",
+          "meaning": "the tree of time-critical units"
+        },
+        {
+          "token": "plot",
+          "meaning": "SVG of the whole boot timeline — write to a file"
+        },
+        {
+          "token": "security",
+          "meaning": "score a unit's security hardening"
+        },
+        {
+          "token": "calendar",
+          "meaning": "validate a calendar expression (OnCalendar=)"
+        }
+      ],
+      "oftenWith": [
+        "systemctl",
+        "journalctl"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "acpi",
+      "pkg": "acpi",
+      "group": "System",
+      "what": "Shows battery, AC adapter, thermal and fan state from the kernel.",
+      "usage": "acpi [options]",
+      "words": [
+        "battery",
+        "power",
+        "ac",
+        "adapter",
+        "thermal",
+        "fan",
+        "laptop"
+      ],
+      "examples": [
+        {
+          "command": "acpi",
+          "meaning": "battery percentage and charge/discharge state"
+        },
+        {
+          "command": "acpi -V",
+          "meaning": "everything: battery, thermal, fan, AC adapter"
+        }
+      ],
+      "options": [
+        {
+          "token": "-b",
+          "meaning": "battery only"
+        },
+        {
+          "token": "-a",
+          "meaning": "AC adapter only"
+        },
+        {
+          "token": "-t",
+          "meaning": "thermal only"
+        },
+        {
+          "token": "-V",
+          "meaning": "everything (verbose)"
+        },
+        {
+          "token": "-i",
+          "meaning": "details: capacity, cycle count, design capacity"
+        }
+      ],
+      "oftenWith": [
+        "upower",
+        "sensors",
+        "systemctl"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "upower",
+      "pkg": "upower",
+      "group": "System",
+      "what": "Queries UPower for battery and power device details (the daemon behind acpi's data).",
+      "usage": "upower [options]",
+      "words": [
+        "battery",
+        "power",
+        "laptop",
+        "ups",
+        "daemon",
+        "statistics"
+      ],
+      "examples": [
+        {
+          "command": "upower -d",
+          "meaning": "dump every power device's full state"
+        },
+        {
+          "command": "upower --enumerate",
+          "meaning": "object paths of every power device"
+        }
+      ],
+      "options": [
+        {
+          "token": "-d, --dump",
+          "meaning": "dump: all power device info"
+        },
+        {
+          "token": "-b, --battery",
+          "meaning": "just the battery's details: charge, health, time left"
+        },
+        {
+          "token": "-e, --enumerate",
+          "meaning": "list object paths of every device"
+        },
+        {
+          "token": "-i, --show-info",
+          "meaning": "show one device, by the object path --enumerate lists"
+        },
+        {
+          "token": "-m, --monitor",
+          "meaning": "watch device changes live"
+        }
+      ],
+      "oftenWith": [
+        "acpi",
+        "systemctl",
+        "sensors"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "pactl",
+      "pkg": "libpulse",
+      "group": "Sound",
+      "what": "Controls PipeWire-Pulse / PulseAudio from the terminal: sinks, sources, volumes, defaults.",
+      "usage": "pactl <command>",
+      "words": [
+        "audio",
+        "sound",
+        "volume",
+        "sink",
+        "source",
+        "output",
+        "pulse",
+        "pipewire",
+        "mute"
+      ],
+      "examples": [
+        {
+          "command": "pactl list sinks short",
+          "meaning": "audio outputs (speakers, headphones), one per line"
+        },
+        {
+          "command": "pactl set-sink-volume @DEFAULT_SINK@ 80%",
+          "meaning": "set the default output's volume to 80%"
+        },
+        {
+          "command": "pactl set-default-sink <name>",
+          "meaning": "make this output the default"
+        }
+      ],
+      "options": [],
+      "oftenWith": [
+        "systemctl"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "xrandr",
+      "pkg": "xorg-xrandr",
+      "group": "Display",
+      "what": "Shows and sets displays under X11: resolution, refresh rate, position, mirroring.",
+      "usage": "xrandr [options]",
+      "words": [
+        "display",
+        "monitor",
+        "screen",
+        "resolution",
+        "refresh",
+        "rate",
+        "x11",
+        "second",
+        "external"
+      ],
+      "examples": [
+        {
+          "command": "xrandr",
+          "meaning": "every display and the resolutions it supports"
+        },
+        {
+          "command": "xrandr --output HDMI-1 --mode 1920x1080 --right-of eDP-1",
+          "meaning": "set HDMI to 1080p, to the right of the laptop screen"
+        },
+        {
+          "command": "xrandr --output eDP-1 --brightness 0.7",
+          "meaning": "dim the laptop screen to 70%"
+        }
+      ],
+      "options": [
+        {
+          "token": "--output",
+          "meaning": "which display to operate on"
+        },
+        {
+          "token": "--mode",
+          "meaning": "set resolution (e.g. 1920x1080)"
+        },
+        {
+          "token": "--rate",
+          "meaning": "refresh rate (e.g. 60, 144)"
+        },
+        {
+          "token": "--right-of",
+          "meaning": "place this display to the right of another"
+        },
+        {
+          "token": "--left-of",
+          "meaning": "place this display to the left of another"
+        },
+        {
+          "token": "--above",
+          "meaning": "place above another display"
+        },
+        {
+          "token": "--below",
+          "meaning": "place below another display"
+        },
+        {
+          "token": "--off",
+          "meaning": "disable this display"
+        },
+        {
+          "token": "--auto",
+          "meaning": "enable at preferred settings if connected"
+        },
+        {
+          "token": "--rotate",
+          "meaning": "normal / left / right / inverted"
+        },
+        {
+          "token": "--brightness",
+          "meaning": "multiplier (1.0 normal, 0.5 dim, 2.0 bright)"
+        }
+      ],
+      "caution": "xrandr is X11 only. On Wayland, use wlr-randr, kscreen-doctor, or your compositor's settings.",
+      "oftenWith": [
+        "systemctl"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "fc-list",
+      "pkg": "fontconfig",
+      "group": "Display",
+      "what": "Lists installed fonts by family, and finds which font matches a pattern.",
+      "usage": "fc-list [options] [pattern]",
+      "words": [
+        "font",
+        "fonts",
+        "family",
+        "list",
+        "installed",
+        "typeface",
+        "glyph"
+      ],
+      "examples": [
+        {
+          "command": "fc-list | head",
+          "meaning": "the first ten installed fonts"
+        },
+        {
+          "command": "fc-list : family",
+          "meaning": "just family names (deduped)"
+        },
+        {
+          "command": "fc-list : spacing=mono",
+          "meaning": "only monospace fonts"
+        }
+      ],
+      "options": [
+        {
+          "token": "-v",
+          "meaning": "verbose: full font pattern (file, family, style, lang, spacing)"
+        },
+        {
+          "token": "-q",
+          "meaning": "quiet: just family names"
+        },
+        {
+          "token": "-f",
+          "meaning": "format: custom output string"
+        }
+      ],
+      "oftenWith": [
+        "ls"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "dig",
+      "pkg": "bind",
+      "group": "Network",
+      "what": "Queries DNS directly: resolves a name to its address, or follows the chain from the root.",
+      "usage": "dig [options] <name> [type]",
+      "words": [
+        "dns",
+        "lookup",
+        "resolve",
+        "name",
+        "address",
+        "mx",
+        "ns",
+        "txt",
+        "trace",
+        "domain"
+      ],
+      "examples": [
+        {
+          "command": "dig archlinux.org",
+          "meaning": "the A records (IPv4) for archlinux.org"
+        },
+        {
+          "command": "dig +short archlinux.org",
+          "meaning": "just the IP, nothing else"
+        },
+        {
+          "command": "dig MX archlinux.org",
+          "meaning": "mail exchangers for the domain"
+        },
+        {
+          "command": "dig -x 8.8.8.8",
+          "meaning": "reverse lookup: which name points at this IP"
+        }
+      ],
+      "options": [
+        {
+          "token": "+short",
+          "meaning": "only the answer, one per line"
+        },
+        {
+          "token": "+noall +answer",
+          "meaning": "only the answer section"
+        },
+        {
+          "token": "+trace",
+          "meaning": "follow the delegation chain from the root servers down"
+        },
+        {
+          "token": "-x",
+          "meaning": "reverse lookup of an IP address"
+        },
+        {
+          "token": "-t",
+          "meaning": "query type: A, AAAA, MX, NS, TXT, SOA, CNAME, ANY…"
+        }
+      ],
+      "oftenWith": [
+        "ping",
+        "ip"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "nmap",
+      "pkg": "nmap",
+      "group": "Network",
+      "what": "Scans a host or network for open ports, running services, and the OS behind them.",
+      "usage": "nmap [options] <target>",
+      "words": [
+        "scan",
+        "port",
+        "ports",
+        "open",
+        "service",
+        "security",
+        "network",
+        "host",
+        "discover"
+      ],
+      "examples": [
+        {
+          "command": "nmap localhost",
+          "meaning": "the 1000 most common ports on this machine"
+        },
+        {
+          "command": "nmap -sV 192.168.1.20",
+          "meaning": "scan + probe which service version answers each open port"
+        },
+        {
+          "command": "nmap -sn 192.168.1.0/24",
+          "meaning": "ping sweep: which hosts are up on this network"
+        }
+      ],
+      "options": [
+        {
+          "token": "-sS",
+          "meaning": "SYN scan (stealth, needs sudo) — the default when run as root"
+        },
+        {
+          "token": "-sT",
+          "meaning": "TCP connect scan (no sudo needed)"
+        },
+        {
+          "token": "-sV",
+          "meaning": "version detection: probe the service behind each open port"
+        },
+        {
+          "token": "-sn",
+          "meaning": "ping scan: just check which hosts are up, no ports"
+        },
+        {
+          "token": "-p",
+          "meaning": "ports to scan (e.g. -p 22,80,443 or -p- for all 65535)"
+        },
+        {
+          "token": "-A",
+          "meaning": "aggressive: OS + version + script + traceroute in one"
+        },
+        {
+          "token": "-F",
+          "meaning": "fast: top 100 ports"
+        }
+      ],
+      "caution": "Only scan networks you own or have permission to test. Unauthorized scanning can be illegal.",
+      "oftenWith": [
+        "ss",
+        "ping",
+        "ip"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "bluetoothctl",
+      "pkg": "bluez-utils",
+      "group": "Network",
+      "what": "Controls Bluetooth from the terminal: scan, pair, connect, trust, remove devices.",
+      "usage": "bluetoothctl [command]",
+      "words": [
+        "bluetooth",
+        "bt",
+        "pair",
+        "connect",
+        "device",
+        "scan",
+        "wireless",
+        "headphones"
+      ],
+      "examples": [
+        {
+          "command": "bluetoothctl scan on",
+          "meaning": "start scanning for discoverable devices (Ctrl+D to exit)"
+        },
+        {
+          "command": "bluetoothctl pair <addr>",
+          "meaning": "pair with a device by its MAC address"
+        },
+        {
+          "command": "bluetoothctl connect <addr>",
+          "meaning": "connect to a paired device"
+        },
+        {
+          "command": "bluetoothctl devices",
+          "meaning": "list every paired device"
+        }
+      ],
+      "options": [],
+      "oftenWith": [
+        "systemctl",
+        "rfkill",
+        "nmcli"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "rfkill",
+      "pkg": "util-linux",
+      "group": "Network",
+      "what": "Shows and toggles the hardware radio kill switch — Wi-Fi, Bluetooth, WWAN, WIMAX.",
+      "usage": "sudo rfkill [command]",
+      "words": [
+        "radio",
+        "kill",
+        "block",
+        "unblock",
+        "wifi",
+        "bluetooth",
+        "wireless",
+        "airplane"
+      ],
+      "examples": [
+        {
+          "command": "rfkill list",
+          "meaning": "every radio device and whether it is soft/hard blocked"
+        },
+        {
+          "command": "sudo rfkill unblock wifi",
+          "meaning": "unblock Wi-Fi if it is soft-blocked"
+        }
+      ],
+      "options": [
+        {
+          "token": "list",
+          "meaning": "list devices and their block state"
+        },
+        {
+          "token": "block",
+          "meaning": "soft-block a device (wifi, bluetooth, all, or index)"
+        },
+        {
+          "token": "unblock",
+          "meaning": "unblock a soft-blocked device (can't undo a hardware switch)"
+        }
+      ],
+      "oftenWith": [
+        "bluetoothctl",
+        "nmcli",
+        "ip"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "grub-mkconfig",
+      "pkg": "grub",
+      "group": "Packages",
+      "what": "Regenerates GRUB's config (grub.cfg) from /etc/default/grub and the scripts in /etc/grub.d.",
+      "usage": "sudo grub-mkconfig -o /boot/grub/grub.cfg",
+      "words": [
+        "grub",
+        "bootloader",
+        "config",
+        "generate",
+        "regenerate",
+        "menu",
+        "entries"
+      ],
+      "examples": [
+        {
+          "command": "sudo grub-mkconfig -o /boot/grub/grub.cfg",
+          "meaning": "rebuild the boot menu after editing /etc/default/grub"
+        }
+      ],
+      "options": [
+        {
+          "token": "-o",
+          "meaning": "output: where to write the generated grub.cfg"
+        }
+      ],
+      "oftenWith": [
+        "pacman",
+        "efibootmgr",
+        "mkinitcpio"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "efibootmgr",
+      "pkg": "efibootmgr",
+      "group": "Packages",
+      "what": "Shows and edits the UEFI boot menu: entries, order, timeout, BootNext.",
+      "usage": "sudo efibootmgr [options]",
+      "words": [
+        "uefi",
+        "efi",
+        "boot",
+        "bootloader",
+        "entry",
+        "order",
+        "nvram",
+        "efivars"
+      ],
+      "examples": [
+        {
+          "command": "efibootmgr",
+          "meaning": "current boot order and every entry"
+        },
+        {
+          "command": "sudo efibootmgr -c -d /dev/sda -p 1 -L 'Arch Linux' -l '\\EFI\\arch\\grubx64.efi'",
+          "meaning": "create a new boot entry"
+        }
+      ],
+      "options": [
+        {
+          "token": "-c",
+          "meaning": "create a new boot entry"
+        },
+        {
+          "token": "-d",
+          "meaning": "disk containing the EFI System Partition (default /dev/sda)"
+        },
+        {
+          "token": "-p",
+          "meaning": "partition number of the ESP (default 1)"
+        },
+        {
+          "token": "-L",
+          "meaning": "label: the entry's name as it appears in the boot menu"
+        },
+        {
+          "token": "-l",
+          "meaning": "loader: the path to the .efi file inside the ESP"
+        },
+        {
+          "token": "-o",
+          "meaning": "set the boot order (comma-separated hex entry IDs)"
+        },
+        {
+          "token": "-B",
+          "meaning": "delete an entry by its ID"
+        }
+      ],
+      "caution": "efibootmgr writes to NVRAM. A wrong command can make the machine unbootable until you re-add an entry.",
+      "oftenWith": [
+        "grub-mkconfig",
+        "lsblk"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "fwupdmgr",
+      "pkg": "fwupd",
+      "group": "Packages",
+      "what": "Checks and installs firmware updates for the BIOS, dock, SSD, and other LVFS-supported devices.",
+      "usage": "fwupdmgr [command]",
+      "words": [
+        "firmware",
+        "bios",
+        "uefi",
+        "update",
+        "upgrade",
+        "lvfs",
+        "device"
+      ],
+      "examples": [
+        {
+          "command": "fwupdmgr get-devices",
+          "meaning": "every device fwupd can update"
+        },
+        {
+          "command": "fwupdmgr get-updates",
+          "meaning": "available firmware updates"
+        },
+        {
+          "command": "fwupdmgr update",
+          "meaning": "apply all pending firmware updates"
+        }
+      ],
+      "options": [],
+      "oftenWith": [
+        "pacman",
+        "efibootmgr",
+        "upower"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "gpg",
+      "pkg": "gnupg",
+      "group": "Security",
+      "what": "Signs, verifies, encrypts and decrypts with PGP keys — and manages your keyring.",
+      "usage": "gpg [options] [command]",
+      "words": [
+        "pgp",
+        "sign",
+        "verify",
+        "encrypt",
+        "decrypt",
+        "key",
+        "keyring",
+        "gpg",
+        "signature"
+      ],
+      "examples": [
+        {
+          "command": "gpg --list-keys",
+          "meaning": "public keys in your keyring"
+        },
+        {
+          "command": "gpg --verify file.sig",
+          "meaning": "verify a detached signature against a file"
+        },
+        {
+          "command": "gpg -s file.txt",
+          "meaning": "make a signature (file.txt.sig)"
+        },
+        {
+          "command": "gpg -e -r alice@example.com secret.txt",
+          "meaning": "encrypt secret.txt to Alice's public key"
+        },
+        {
+          "command": "gpg -d secret.txt.gpg",
+          "meaning": "decrypt a file (asks for passphrase if needed)"
+        }
+      ],
+      "options": [
+        {
+          "token": "-s, --sign",
+          "meaning": "make a signature"
+        },
+        {
+          "token": "--verify",
+          "meaning": "verify a signature"
+        },
+        {
+          "token": "-e, --encrypt",
+          "meaning": "encrypt to a recipient's public key (-r name)"
+        },
+        {
+          "token": "-d, --decrypt",
+          "meaning": "decrypt (asks for the passphrase / unlocks the key)"
+        },
+        {
+          "token": "-c, --symmetric",
+          "meaning": "symmetric: encrypt with a passphrase, no key needed"
+        },
+        {
+          "token": "-k, --list-keys",
+          "meaning": "list public keys"
+        },
+        {
+          "token": "-K, --list-secret-keys",
+          "meaning": "list private keys"
+        },
+        {
+          "token": "--import",
+          "meaning": "import keys from a file"
+        },
+        {
+          "token": "--export",
+          "meaning": "export a key (add --armor for ASCII)"
+        },
+        {
+          "token": "--recv-keys",
+          "meaning": "fetch a key from a keyserver by ID"
+        },
+        {
+          "token": "--send-keys",
+          "meaning": "push a key to a keyserver"
+        },
+        {
+          "token": "--gen-key",
+          "meaning": "generate a new key pair"
+        },
+        {
+          "token": "--armor",
+          "meaning": "ASCII-armored output (good for email / text)"
+        }
+      ],
+      "oftenWith": [
+        "ssh-keygen",
+        "pacman"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "sha256sum",
+      "pkg": "coreutils",
+      "group": "Security",
+      "what": "Prints or checks the SHA-256 checksum of a file — proves a download wasn't corrupted.",
+      "usage": "sha256sum [options] <file>…",
+      "words": [
+        "sha256",
+        "sha",
+        "checksum",
+        "hash",
+        "verify",
+        "integrity",
+        "shasum",
+        "download"
+      ],
+      "examples": [
+        {
+          "command": "sha256sum archlinux.iso",
+          "meaning": "the SHA-256 hash of the ISO (compare to the official one)"
+        },
+        {
+          "command": "sha256sum -c archlinux.iso.sha256",
+          "meaning": "check the ISO against a .sha256 file (OK or FAILED)"
+        }
+      ],
+      "options": [
+        {
+          "token": "-c, --check",
+          "meaning": "read checksums from a file and verify them (output: OK or FAILED)"
+        },
+        {
+          "token": "-b, --binary",
+          "meaning": "read in binary mode (matters on some systems)"
+        },
+        {
+          "token": "--tag",
+          "meaning": "BSD-style output"
+        },
+        {
+          "token": "--quiet",
+          "meaning": "don't print OK for each file that verifies"
+        },
+        {
+          "token": "--status",
+          "meaning": "no output — rely on the exit code"
+        },
+        {
+          "token": "--strict",
+          "meaning": "exit non-zero if any line is improperly formatted"
+        }
+      ],
+      "oftenWith": [
+        "curl",
+        "wget",
+        "gpg"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "ssh-keygen",
+      "pkg": "openssh",
+      "group": "Security",
+      "what": "Creates, inspects and manages SSH key pairs — for passwordless logins and Git over SSH.",
+      "usage": "ssh-keygen [options]",
+      "words": [
+        "ssh",
+        "key",
+        "keygen",
+        "ed25519",
+        "rsa",
+        "public",
+        "private",
+        "passphrase",
+        "fingerprint"
+      ],
+      "examples": [
+        {
+          "command": "ssh-keygen -t ed25519 -C 'me@laptop'",
+          "meaning": "generate an Ed25519 key (recommended) with a comment"
+        },
+        {
+          "command": "ssh-keygen -t rsa -b 4096",
+          "meaning": "generate a 4096-bit RSA key (legacy servers)"
+        },
+        {
+          "command": "ssh-keygen -l -f ~/.ssh/id_ed25519.pub",
+          "meaning": "the fingerprint of a public key (for GitHub / gitlab)"
+        },
+        {
+          "command": "ssh-keygen -p",
+          "meaning": "change the passphrase on a private key"
+        }
+      ],
+      "options": [
+        {
+          "token": "-t",
+          "meaning": "type: ed25519 (recommended), rsa, ecdsa"
+        },
+        {
+          "token": "-b",
+          "meaning": "bits (for RSA: 4096)"
+        },
+        {
+          "token": "-f",
+          "meaning": "output filename"
+        },
+        {
+          "token": "-C",
+          "meaning": "comment (usually your email)"
+        },
+        {
+          "token": "-N",
+          "meaning": "new passphrase ('' for none)"
+        },
+        {
+          "token": "-l",
+          "meaning": "show the fingerprint of an existing key"
+        },
+        {
+          "token": "-p",
+          "meaning": "change the passphrase of a private key"
+        },
+        {
+          "token": "-y",
+          "meaning": "read a private key, print the public key"
+        }
+      ],
+      "oftenWith": [
+        "ssh",
+        "gpg",
+        "cat"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "tmux",
+      "pkg": "tmux",
+      "group": "Development",
+      "what": "A terminal multiplexer: sessions that survive a disconnect, windows and panes inside them.",
+      "usage": "tmux [command]",
+      "words": [
+        "tmux",
+        "session",
+        "multiplexer",
+        "window",
+        "pane",
+        "detach",
+        "resume",
+        "terminal"
+      ],
+      "examples": [
+        {
+          "command": "tmux new -s work",
+          "meaning": "start a named session 'work'"
+        },
+        {
+          "command": "tmux ls",
+          "meaning": "list running sessions"
+        },
+        {
+          "command": "tmux attach -t work",
+          "meaning": "reattach to the 'work' session"
+        },
+        {
+          "command": "tmux kill-session -t work",
+          "meaning": "kill the session"
+        }
+      ],
+      "options": [
+        {
+          "token": "new",
+          "meaning": "create a new session (-s for a name)"
+        },
+        {
+          "token": "ls",
+          "meaning": "list sessions"
+        },
+        {
+          "token": "attach (-t)",
+          "meaning": "attach to a session by name"
+        },
+        {
+          "token": "kill-session (-t)",
+          "meaning": "kill a session by name"
+        }
+      ],
+      "caution": "Inside tmux, the prefix is Ctrl+B then a key. Detach with Ctrl+B D, not exit.",
+      "oftenWith": [
+        "vim",
+        "ssh",
+        "git"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "bat",
+      "pkg": "bat",
+      "group": "Development",
+      "what": "A modern cat with syntax highlighting, line numbers, and Git integration.",
+      "usage": "bat [options] <file>…",
+      "words": [
+        "cat",
+        "syntax",
+        "highlight",
+        "code",
+        "preview",
+        "batcat",
+        "color"
+      ],
+      "examples": [
+        {
+          "command": "bat ~/Projects/main.rs",
+          "meaning": "the Rust file, syntax-highlighted with line numbers"
+        },
+        {
+          "command": "bat -p config.toml",
+          "meaning": "plain (no decorations) — good for piping"
+        },
+        {
+          "command": "bat --list-languages",
+          "meaning": "every syntax it knows"
+        }
+      ],
+      "options": [
+        {
+          "token": "-n, --number",
+          "meaning": "show line numbers"
+        },
+        {
+          "token": "-p, --plain",
+          "meaning": "plain: no colors, no line numbers, no decorations"
+        },
+        {
+          "token": "-A",
+          "meaning": "show non-printable chars (tabs, line endings)"
+        },
+        {
+          "token": "-r",
+          "meaning": "line range: -r 10:20 shows lines 10–20"
+        },
+        {
+          "token": "-l",
+          "meaning": "force a language for syntax highlighting"
+        },
+        {
+          "token": "--paging",
+          "meaning": "off/never/auto: control the pager"
+        }
+      ],
+      "oftenWith": [
+        "cat",
+        "less",
+        "grep",
+        "rg"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "rg",
+      "pkg": "ripgrep",
+      "group": "Development",
+      "what": "Recursively searches files for a pattern — fast, respects .gitignore, color output.",
+      "usage": "rg [options] <pattern> [path]",
+      "words": [
+        "ripgrep",
+        "search",
+        "find",
+        "grep",
+        "recursive",
+        "pattern",
+        "regex"
+      ],
+      "examples": [
+        {
+          "command": "rg 'fn main' ~/Projects",
+          "meaning": "every 'fn main' in the project, with line numbers"
+        },
+        {
+          "command": "rg -i error /var/log",
+          "meaning": "case-insensitive 'error' under /var/log"
+        },
+        {
+          "command": "rg -t rust 'use '",
+          "meaning": "only Rust files: every 'use ' line"
+        },
+        {
+          "command": "rg -l TODO",
+          "meaning": "just the file names that contain TODO"
+        }
+      ],
+      "options": [
+        {
+          "token": "-i, --ignore-case",
+          "meaning": "case-insensitive"
+        },
+        {
+          "token": "-n, --line-number",
+          "meaning": "show line numbers (on by default)"
+        },
+        {
+          "token": "-l, --files-with-matches",
+          "meaning": "just file names"
+        },
+        {
+          "token": "-c, --count",
+          "meaning": "count of matches per file"
+        },
+        {
+          "token": "-t",
+          "meaning": "type: only files of this type (rust, py, js, ts, go…)"
+        },
+        {
+          "token": "-g",
+          "meaning": "glob: include/exclude files matching a pattern"
+        },
+        {
+          "token": "-A",
+          "meaning": "lines after each match"
+        },
+        {
+          "token": "-B",
+          "meaning": "lines before each match"
+        },
+        {
+          "token": "-C",
+          "meaning": "context: lines before and after"
+        }
+      ],
+      "oftenWith": [
+        "grep",
+        "fd",
+        "bat"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "fd",
+      "pkg": "fd",
+      "group": "Development",
+      "what": "A modern find: searches file names quickly, respects .gitignore, color output.",
+      "usage": "fd [options] <pattern> [path]",
+      "words": [
+        "find",
+        "fd",
+        "search",
+        "filename",
+        "recursive",
+        "locate",
+        "files"
+      ],
+      "examples": [
+        {
+          "command": "fd config",
+          "meaning": "files whose name matches 'config' (anywhere under here)"
+        },
+        {
+          "command": "fd -e toml",
+          "meaning": "only .toml files"
+        },
+        {
+          "command": "fd -H .bashrc",
+          "meaning": "include hidden files"
+        },
+        {
+          "command": "fd -x rm",
+          "meaning": "find then run 'rm' on each result (like find -exec)"
+        }
+      ],
+      "options": [
+        {
+          "token": "-H, --hidden",
+          "meaning": "search hidden files and directories"
+        },
+        {
+          "token": "-I, --no-ignore",
+          "meaning": "don't respect .gitignore"
+        },
+        {
+          "token": "-t, --type",
+          "meaning": "filter by type: f file, d directory, l symlink"
+        },
+        {
+          "token": "-e, --extension",
+          "meaning": "filter by file extension"
+        },
+        {
+          "token": "-x, --exec",
+          "meaning": "execute a command on each result"
+        },
+        {
+          "token": "-l, --list-details",
+          "meaning": "show details (permissions, size, owner)"
+        },
+        {
+          "token": "-j, --threads",
+          "meaning": "number of threads"
+        }
+      ],
+      "oftenWith": [
+        "find",
+        "rg",
+        "bat"
+      ],
+      "neededBy": []
+    },
+    {
+      "name": "fzf",
+      "pkg": "fzf",
+      "group": "Development",
+      "what": "A fuzzy finder: pipe any list to it and pick one interactively, by partial typing.",
+      "usage": "<command> | fzf [options]",
+      "words": [
+        "fuzzy",
+        "fzf",
+        "filter",
+        "interactive",
+        "picker",
+        "select",
+        "search",
+        "find"
+      ],
+      "examples": [
+        {
+          "command": "fzf",
+          "meaning": "fuzzy-find a file under this folder: type to narrow the list, Enter prints the one you picked"
+        },
+        {
+          "command": "ls | fzf",
+          "meaning": "pick one entry from ls's output"
+        },
+        {
+          "command": "git log --oneline | fzf",
+          "meaning": "fuzzy-pick a commit hash"
+        }
+      ],
+      "options": [
+        {
+          "token": "-m, --multi",
+          "meaning": "select multiple items (Tab to toggle)"
+        },
+        {
+          "token": "-i, --ignore-case",
+          "meaning": "case-insensitive matching"
+        },
+        {
+          "token": "--reverse",
+          "meaning": "list newest at the top"
+        },
+        {
+          "token": "--height",
+          "meaning": "show in N lines instead of fullscreen"
+        },
+        {
+          "token": "--preview",
+          "meaning": "run a command on the highlighted item (e.g. --preview 'bat {}')"
+        }
+      ],
+      "oftenWith": [
+        "rg",
+        "fd",
+        "bat"
+      ],
+      "neededBy": []
+    }
+  ]
+}

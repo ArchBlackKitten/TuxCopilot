@@ -1,0 +1,41 @@
+[package]
+name = "tuxcopilot"
+version = "0.1.0"
+edition = "2021"
+license = "AGPL-3.0-only"
+description = "Arch Linux system manager: saved commands, app installs, usage log and local LLMs."
+
+[lib]
+name = "tuxcopilot_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[[bin]]
+name = "tuxcopilot"
+path = "src/main.rs"
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-dialog = "2"
+# System SQLite (no `bundled`): the distribution's library, not a vendored copy.
+# SQLCipher (the official repos' sqlcipher): SQLite with encryption — the database is sealed by the lock
+rusqlite = { version = "0.32", features = ["sqlcipher"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+chrono = "0.4"
+uuid = { version = "1", features = ["v4"] }
+libc = "0.2"
+# already in the lockfile (other crates use it): nothing new is fetched
+base64 = "0.22"
+# the lock (lock.rs): the system OpenSSL (already linked for https), the age format for the
+# recovery file, QR codes for the phone, and wiping keys from memory — all already on disk
+openssl = "0.10"
+age = { version = "0.12", default-features = false, features = ["armor"] }
+qrcodegen = "1.8"
+zeroize = "1"
+# already in the lockfile (other crates use it): the "Fluff won't run this" patterns (wreck.rs)
+regex = "1"
+# native-tls = the system OpenSSL, again not a vendored stack.
+reqwest = { version = "0.12", default-features = false, features = ["native-tls"] }

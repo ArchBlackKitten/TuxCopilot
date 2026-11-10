@@ -1,0 +1,190 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-arch: var(--arch);
+  --color-arch-soft: var(--arch-soft);
+  --color-ok: var(--ok);
+  --color-warn: var(--warn);
+  --color-bad: var(--bad);
+  --color-info: var(--info);
+  --color-dry: var(--dry);
+  --color-term: var(--term);
+  --color-term-foreground: var(--term-foreground);
+  --color-code: var(--code);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* The Arch palette (forced dark, Arch blue #1793D1 accent). Settings → Look sets these same
+   variables from another palette (src/lib/palette.ts), at runtime. */
+:root,
+.dark {
+  /* System fonts only: nothing is fetched to draw the interface. */
+  --font-geist-sans: ui-sans-serif, system-ui, "Noto Sans", "DejaVu Sans", sans-serif;
+  --font-geist-mono: ui-monospace, "JetBrains Mono", "Fira Code", "DejaVu Sans Mono", monospace;
+  --radius: 0.5rem;
+  --background: #0a0e14;
+  --foreground: #dbe4ee;
+  --card: #10161f;
+  --card-foreground: #dbe4ee;
+  --popover: #111823;
+  --popover-foreground: #dbe4ee;
+  --primary: #1793d1;
+  --primary-foreground: #06121c;
+  --secondary: #172029;
+  --secondary-foreground: #c3cedb;
+  --muted: #141b25;
+  --muted-foreground: #7c8b9e;
+  --accent: #16222e;
+  --accent-foreground: #cfe6f6;
+  --destructive: #e5534b;
+  --border: #1d2733;
+  --input: #1d2733;
+  --ring: #1793d1;
+  --chart-1: #1793d1;
+  --chart-2: #26a269;
+  --chart-3: #d29922;
+  --chart-4: #a371f7;
+  --chart-5: #e5534b;
+  --sidebar: #0c1118;
+  --sidebar-foreground: #dbe4ee;
+  --sidebar-primary: #1793d1;
+  --sidebar-primary-foreground: #06121c;
+  --sidebar-accent: #141d27;
+  --sidebar-accent-foreground: #dbe4ee;
+  --sidebar-border: #1a232e;
+  --sidebar-ring: #1793d1;
+  --arch: #1793d1;
+  --arch-soft: #1793d11f;
+  --ok: #3fb950;
+  --warn: #d29922;
+  --bad: #f85149;
+  --info: #38bdf8;
+  --dry: #a371f7;
+  --term: #080b10;
+  --term-foreground: #9fb0c3;
+  --code: #0b0f16;
+  --selection: #1793d155;
+  --scrollbar: #2a3644;
+  --on-color: #ffffff;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  ::selection {
+    background: var(--selection);
+  }
+}
+
+/* Slim custom scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar) transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--scrollbar);
+  border-radius: 8px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Terminal output */
+.terminal-out {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 12px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.running-dot {
+  animation: pulse-dot 1.2s ease-in-out infinite;
+}
+
+/* Native dropdowns follow the palette: the box and its open list (WebKit draws <option>
+   itself, white unless told). */
+select {
+  background-color: var(--popover);
+  color: var(--popover-foreground);
+  border-color: var(--border);
+}
+select option,
+select optgroup {
+  background-color: var(--popover);
+  color: var(--popover-foreground);
+}
+
+/* before the look loads (the lock screen): dark, like the default palette */
+html {
+  color-scheme: dark;
+}
+
+/* The guide (guide.ts): the next thing to press glows and pulses; without motion it just glows. */
+@keyframes guide-pulse {
+  0%, 100% { box-shadow: 0 0 0 2px var(--primary), 0 0 0 0 color-mix(in srgb, var(--primary) 55%, transparent); }
+  50% { box-shadow: 0 0 0 2px var(--primary), 0 0 14px 6px color-mix(in srgb, var(--primary) 35%, transparent); }
+}
+.guide-glow {
+  position: relative;
+  z-index: 40;
+  border-radius: 6px;
+  animation: guide-pulse 1.4s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .guide-glow {
+    animation: none;
+    box-shadow: 0 0 0 2px var(--primary), 0 0 12px 4px color-mix(in srgb, var(--primary) 35%, transparent);
+  }
+}

@@ -1,0 +1,83 @@
+# Maintainer: ArchBlackKitten <269491216+ArchBlackKitten@users.noreply.github.com>
+#
+# TuxCopilot from the newest commit on main (the -git package). For the signed releases, use
+# ../PKGBUILD (tuxcopilot). pkgver is worked out from git at build time.
+#
+# Follows Arch's VCS, Rust and Node.js package guidelines: everything is fetched in prepare(),
+# pinned by the lockfiles, and build() and check() are offline; npm's cache stays in $srcdir.
+
+pkgname=tuxcopilot-git
+_pkgname=tuxcopilot
+pkgver=0.1.0
+pkgrel=1
+pkgdesc='A desktop companion for looking after an Arch Linux system (newest commit)'
+arch=('x86_64')
+url='https://github.com/ArchBlackKitten/TuxCopilot'
+license=('AGPL-3.0-only')
+depends=('webkit2gtk-4.1' 'gtk3' 'glib2' 'cairo' 'gdk-pixbuf2' 'libsoup3' 'dbus' 'glibc' 'libgcc' 'openssl' 'sqlcipher' 'hicolor-icon-theme'
+         'gnupg' 'pacman-contrib') # the last two are run as programs, not linked
+makedepends=('cargo' 'nodejs' 'npm' 'git')
+optdepends=(
+  'ksshaskpass: password window for sudo steps on KDE Plasma'
+  'lxqt-openssh-askpass: password window for sudo steps on other desktops'
+  'flatpak: Flatpak apps'
+  'tor: the Tor section'
+  'docker: the Docker section'
+  'ollama: local AI models'
+  'age: open the recovery file without TuxCopilot'
+)
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+# Commits are signed with the creator's SSH key, which makepkg cannot check (it checks GPG
+# only): check them yourself with `git verify-commit HEAD` in src/tuxcopilot.
+source=("$_pkgname::git+$url.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$_pkgname"
+  local v
+  v=$(grep -m1 '^version' src-tauri/Cargo.toml | cut -d'"' -f2)
+  printf "%s.r%s.g%s" "$v" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+prepare() {
+  cd "$_pkgname"
+  export RUSTUP_TOOLCHAIN=stable
+  npm ci --no-fund --no-audit --cache "$srcdir/npm-cache"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')" --manifest-path src-tauri/Cargo.toml
+}
+
+build() {
+  cd "$_pkgname"
+  export RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target TUXCOPILOT_PACKAGE=1 # no build folder kept in the program (build.rs)
+  npm run build --cache "$srcdir/npm-cache"
+  # not `tauri build`: it downloads its own bundlers. The plain binary, offline.
+  cargo build --release --frozen --features tauri/custom-protocol --manifest-path src-tauri/Cargo.toml
+}
+
+check() {
+  cd "$_pkgname"
+  export RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target TUXCOPILOT_PACKAGE=1 # no build folder kept in the program (build.rs)
+  npm test --cache "$srcdir/npm-cache"
+  cargo test --release --frozen --manifest-path src-tauri/Cargo.toml
+}
+
+package() {
+  cd "$_pkgname"
+  install -Dm755 target/release/tuxcopilot "$pkgdir/usr/bin/tuxcopilot"
+  for s in 32:32x32 64:64x64 128:128x128 256:128x128@2x 512:icon; do
+    install -Dm644 "src-tauri/icons/${s#*:}.png" "$pkgdir/usr/share/icons/hicolor/${s%%:*}x${s%%:*}/apps/tuxcopilot.png"
+  done
+  install -Dm644 src-tauri/icons/icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/tuxcopilot.svg"
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/tuxcopilot.desktop" <<EOF
+[Desktop Entry]
+Type=Application
+Name=TuxCopilot
+Comment=A desktop companion for looking after an Arch Linux system
+Exec=tuxcopilot
+Icon=tuxcopilot
+Terminal=false
+Categories=System;
+EOF
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

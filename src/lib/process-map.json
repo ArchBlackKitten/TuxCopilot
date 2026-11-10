@@ -1,0 +1,608 @@
+{
+ "map": {
+  "firefox": {
+   "app": "firefox",
+   "source": "pacman"
+  },
+  "firefox-bin": {
+   "app": "firefox",
+   "source": "pacman"
+  },
+  "firefox-de": {
+   "app": "firefox-developer-edition",
+   "source": "pacman"
+  },
+  "librewolf": {
+   "app": "librewolf",
+   "source": "pacman"
+  },
+  "chromium": {
+   "app": "chromium",
+   "source": "pacman"
+  },
+  "chrome": {
+   "app": "google-chrome",
+   "source": "aur"
+  },
+  "brave-browser": {
+   "app": "brave-browser",
+   "source": "aur"
+  },
+  "vivaldi-bin": {
+   "app": "vivaldi",
+   "source": "aur"
+  },
+  "opera": {
+   "app": "opera",
+   "source": "aur"
+  },
+  "epiphany": {
+   "app": "epiphany",
+   "source": "pacman"
+  },
+  "falkon": {
+   "app": "falkon",
+   "source": "pacman"
+  },
+  "tor": {
+   "app": "tor-browser",
+   "source": "aur"
+  },
+  "thunderbird": {
+   "app": "thunderbird",
+   "source": "pacman"
+  },
+  "evolution": {
+   "app": "evolution",
+   "source": "pacman"
+  },
+  "geary": {
+   "app": "geary",
+   "source": "pacman"
+  },
+  "mailspring": {
+   "app": "mailspring",
+   "source": "aur"
+  },
+  "code": {
+   "app": "code",
+   "source": "pacman"
+  },
+  "code-oss": {
+   "app": "code",
+   "source": "pacman"
+  },
+  "codium": {
+   "app": "vscodium-bin",
+   "source": "aur"
+  },
+  "idea": {
+   "app": "intellij-idea-community",
+   "source": "aur"
+  },
+  "pycharm": {
+   "app": "pycharm-community",
+   "source": "aur"
+  },
+  "webstorm": {
+   "app": "webstorm",
+   "source": "aur"
+  },
+  "cursor": {
+   "app": "cursor-bin",
+   "source": "aur"
+  },
+  "zed": {
+   "app": "zed",
+   "source": "pacman"
+  },
+  "subl": {
+   "app": "sublime-text-4",
+   "source": "aur"
+  },
+  "jetbrains-tool": {
+   "app": "jetbrains-toolbox",
+   "source": "aur"
+  },
+  "kitty": {
+   "app": "kitty",
+   "source": "pacman"
+  },
+  "alacritty": {
+   "app": "alacritty",
+   "source": "pacman"
+  },
+  "konsole": {
+   "app": "konsole",
+   "source": "pacman"
+  },
+  "gnome-terminal-": {
+   "app": "gnome-terminal",
+   "source": "pacman"
+  },
+  "xfce4-terminal": {
+   "app": "xfce4-terminal",
+   "source": "pacman"
+  },
+  "tilix": {
+   "app": "tilix",
+   "source": "pacman"
+  },
+  "terminator": {
+   "app": "terminator",
+   "source": "pacman"
+  },
+  "wezterm": {
+   "app": "wezterm",
+   "source": "pacman"
+  },
+  "nautilus": {
+   "app": "nautilus",
+   "source": "pacman"
+  },
+  "dolphin": {
+   "app": "dolphin",
+   "source": "pacman"
+  },
+  "thunar": {
+   "app": "thunar",
+   "source": "pacman"
+  },
+  "nemo": {
+   "app": "nemo",
+   "source": "pacman"
+  },
+  "pcmanfm": {
+   "app": "pcmanfm",
+   "source": "pacman"
+  },
+  "ranger": {
+   "app": "ranger",
+   "source": "pacman"
+  },
+  "lf": {
+   "app": "lf",
+   "source": "pacman"
+  },
+  "vlc": {
+   "app": "vlc",
+   "source": "pacman"
+  },
+  "mpv": {
+   "app": "mpv",
+   "source": "pacman"
+  },
+  "celluloid": {
+   "app": "celluloid",
+   "source": "pacman"
+  },
+  "smplayer": {
+   "app": "smplayer",
+   "source": "pacman"
+  },
+  "spotify": {
+   "app": "spotify-launcher",
+   "source": "pacman"
+  },
+  "audacious": {
+   "app": "audacious",
+   "source": "pacman"
+  },
+  "rhythmbox": {
+   "app": "rhythmbox",
+   "source": "pacman"
+  },
+  "cmus": {
+   "app": "cmus",
+   "source": "pacman"
+  },
+  "strawberry": {
+   "app": "strawberry",
+   "source": "pacman"
+  },
+  "gimp": {
+   "app": "gimp",
+   "source": "pacman"
+  },
+  "gimp-2.10": {
+   "app": "gimp",
+   "source": "pacman"
+  },
+  "krita": {
+   "app": "krita",
+   "source": "pacman"
+  },
+  "inkscape": {
+   "app": "inkscape",
+   "source": "pacman"
+  },
+  "blender": {
+   "app": "blender",
+   "source": "pacman"
+  },
+  "darktable": {
+   "app": "darktable",
+   "source": "pacman"
+  },
+  "rawtherapee": {
+   "app": "rawtherapee",
+   "source": "pacman"
+  },
+  "shotwell": {
+   "app": "shotwell",
+   "source": "pacman"
+  },
+  "obs": {
+   "app": "obs-studio",
+   "source": "pacman"
+  },
+  "kdenlive": {
+   "app": "kdenlive",
+   "source": "pacman"
+  },
+  "openshot": {
+   "app": "openshot",
+   "source": "pacman"
+  },
+  "obsidian": {
+   "app": "obsidian",
+   "source": "aur"
+  },
+  "steam": {
+   "app": "steam",
+   "source": "pacman"
+  },
+  "steamwebhelper": {
+   "app": "steam",
+   "source": "pacman"
+  },
+  "lutris": {
+   "app": "lutris",
+   "source": "pacman"
+  },
+  "heroic": {
+   "app": "heroic-games-launcher",
+   "source": "aur"
+  },
+  "bottles": {
+   "app": "bottles",
+   "source": "pacman"
+  },
+  "Xwayland": {
+   "app": "xwayland",
+   "source": "pacman"
+  },
+  "discord": {
+   "app": "discord",
+   "source": "pacman"
+  },
+  "telegram-deskt": {
+   "app": "telegram-desktop",
+   "source": "pacman"
+  },
+  "signal": {
+   "app": "signal-desktop",
+   "source": "aur"
+  },
+  "slack": {
+   "app": "slack-desktop",
+   "source": "aur"
+  },
+  "zoom": {
+   "app": "zoom",
+   "source": "aur"
+  },
+  "teams": {
+   "app": "microsoft-teams",
+   "source": "aur"
+  },
+  "soffice": {
+   "app": "libreoffice-fresh",
+   "source": "pacman"
+  },
+  "soffice.bin": {
+   "app": "libreoffice-fresh",
+   "source": "pacman"
+  },
+  "typora": {
+   "app": "typora",
+   "source": "aur"
+  },
+  "marktext": {
+   "app": "marktext",
+   "source": "aur"
+  },
+  "zettlr": {
+   "app": "zettlr",
+   "source": "aur"
+  },
+  "xournalpp": {
+   "app": "xournalpp",
+   "source": "pacman"
+  },
+  "evince": {
+   "app": "evince",
+   "source": "pacman"
+  },
+  "okular": {
+   "app": "okular",
+   "source": "pacman"
+  },
+  "zathura": {
+   "app": "zathura",
+   "source": "pacman"
+  },
+  "keepassxc": {
+   "app": "keepassxc",
+   "source": "pacman"
+  },
+  "bitwarden": {
+   "app": "bitwarden",
+   "source": "aur"
+  },
+  "1password": {
+   "app": "1password",
+   "source": "aur"
+  },
+  "transmission": {
+   "app": "transmission-gtk",
+   "source": "pacman"
+  },
+  "qbittorrent": {
+   "app": "qbittorrent",
+   "source": "pacman"
+  },
+  "deluge": {
+   "app": "deluge-gtk",
+   "source": "pacman"
+  },
+  "virtualboxvm": {
+   "app": "virtualbox",
+   "source": "pacman"
+  }
+ },
+ "noiseExact": [
+  "kthreadd",
+  "ksoftirqd",
+  "kworker",
+  "migration",
+  "idle_inject",
+  "systemd",
+  "(sd-pam)",
+  "init",
+  "dbus-daemon",
+  "dbus-broker",
+  "dbus-broker-lau",
+  "gnome-shell",
+  "plasmashell",
+  "kwin_wayland",
+  "kwin_x11",
+  "Xorg",
+  "Xwayland",
+  "sway",
+  "swaybg",
+  "hyprland",
+  "Hyprland",
+  "i3",
+  "dunst",
+  "mako",
+  "waybar",
+  "xfwm4",
+  "xfce4-panel",
+  "xfdesktop",
+  "xfce4-session",
+  "marco",
+  "muffin",
+  "cinnamon-sessio",
+  "csd-*",
+  "mate-session",
+  "labwc",
+  "river",
+  "niri",
+  "xorg-server",
+  "wlr-randr",
+  "kanshi",
+  "swayidle",
+  "swaylock",
+  "hypridle",
+  "hyprpaper",
+  "xdg-desktop-por",
+  "xdg-document-po",
+  "xdg-permission-",
+  "gnome-keyring-d",
+  "gnome-session-c",
+  "gnome-session-b",
+  "gsd-*",
+  "goa-daemon",
+  "gvfsd",
+  "gvfsd-fuse",
+  "gvfs-udisks2-",
+  "at-spi-bus-laun",
+  "at-spi2-registr",
+  "dconf-service",
+  "kwalletd5",
+  "kwalletd",
+  "kglobalaccel",
+  "kactivitymanage",
+  "kded5",
+  "kded6",
+  "ksmserver",
+  "kcminit",
+  "ksplashqml",
+  "polkit-kde-auth",
+  "polkit-gnome-au",
+  "polkitd",
+  "rtkit-daemon",
+  "pipewire",
+  "pipewire-pulse",
+  "pipewire-media-",
+  "wireplumber",
+  "pulseaudio",
+  "pavucontrol",
+  "jackd",
+  "pw-jack",
+  "NetworkManager",
+  "wpa_supplicant",
+  "iwd",
+  "dhcpcd",
+  "systemd-resolve",
+  "systemd-logind",
+  "systemd-journal",
+  "systemd-udevd",
+  "systemd-timesyn",
+  "systemd-network",
+  "systemd-homed",
+  "systemd-userwor",
+  "udevd",
+  "udevil",
+  "udisksd",
+  "upowerd",
+  "power-profiles-",
+  "thermald",
+  "irqbalance",
+  "haveged",
+  "boltd",
+  "packagekitd",
+  "packagekit",
+  "cupsd",
+  "cups-browsed",
+  "sshd",
+  "sshd-session",
+  "cron",
+  "crond",
+  "atd",
+  "snapd",
+  "fuse-overlayfs",
+  "bwrap",
+  "flatpak-system-",
+  "flatpak-portal",
+  "logind",
+  "agetty",
+  "login",
+  "su",
+  "sudo",
+  "pkexec",
+  "gpg-agent",
+  "ssh-agent",
+  "gnome-keyring-",
+  "keyring",
+  "seahorse",
+  "dockerd",
+  "containerd",
+  "podman",
+  "conmon",
+  "libvirtd",
+  "virtqemud",
+  "mysqld",
+  "mariadbd",
+  "postgres",
+  "postmaster",
+  "redis-server",
+  "nginx",
+  "httpd",
+  "php-fpm",
+  "caddy",
+  "fail2ban-server",
+  "tailscaled",
+  "openvpn",
+  "wireguard",
+  "wg-quick",
+  "mullvad-daemon",
+  "bluetoothd",
+  "colord",
+  "avahi-daemon",
+  "cups",
+  "smartd",
+  "fdisk",
+  "updatedb",
+  "locate",
+  "fstrim",
+  "swapon",
+  "bash",
+  "zsh",
+  "fish",
+  "nu",
+  "dash",
+  "sh",
+  "ksh",
+  "tcsh",
+  "csh",
+  "ps",
+  "grep",
+  "awk",
+  "sed",
+  "cat",
+  "less",
+  "head",
+  "tail",
+  "tee",
+  "wc",
+  "sort",
+  "uniq",
+  "cut",
+  "tr",
+  "xargs",
+  "watch",
+  "sleep",
+  "timeout",
+  "nice",
+  "find",
+  "du",
+  "df",
+  "ls",
+  "pwd",
+  "which",
+  "whereis",
+  "man",
+  "info",
+  "node",
+  "bun",
+  "bun-worker",
+  "npm",
+  "npx",
+  "yarn",
+  "pnpm",
+  "deno",
+  "esbuild",
+  "next-server",
+  "next-router-wor",
+  "prisma",
+  "tsx",
+  "ts-node",
+  "tsc",
+  "eslint_d",
+  "prettier",
+  "vite",
+  "turbo",
+  "python",
+  "python3",
+  "python3.12",
+  "python3.13",
+  "pip",
+  "ruby",
+  "perl",
+  "php",
+  "lua",
+  "luajit",
+  "tclsh",
+  "wish",
+  "R",
+  "julia",
+  "mono",
+  "dotnet",
+  "java",
+  "javaw",
+  "cargo",
+  "rustc",
+  "clangd",
+  "gopls",
+  "rust-analyzer",
+  "tectonic",
+  "appmanager",
+  "archmanager",
+  "tuxcopilot",
+  "WebKitWebProces",
+  "WebKitNetworkPr",
+  "WebKitGPUProces"
+ ]
+}

@@ -1,0 +1,35 @@
+Installed From  : cachyos-extra-v4
+Name            : dolphin
+Version         : 26.08.2-1.1
+Description     : KDE File Manager
+Architecture    : x86_64_v4
+URL             : https://apps.kde.org/dolphin/
+Licenses        : LGPL-2.0-or-later
+Groups          : kde-applications  kde-system
+Provides        : None
+Depends On      : baloo  baloo-widgets  glibc  kbookmarks  kcmutils  kcodecs  kcolorscheme  kcompletion  kconfig  kconfigwidgets  kcoreaddons  kcrash  kdbusaddons  kfilemetadata  kguiaddons  ki18n  kiconthemes  kio  kio-extras  kjobwidgets  knewstuff  knotifications  kparts  kservice  ktextwidgets  kuserfeedback  kwidgetsaddons  kwindowsystem  kxmlgui  libstdc++  qt6-base  qt6-multimedia  solid
+Optional Deps   : dolphin-plugins: extra plugins [installed]
+                  ffmpegthumbs: video thumbnails [installed]
+                  filelight: detailed disk usage statistics
+                  kde-cli-tools: for editing file type options [installed]
+                  kdegraphics-thumbnailers: PDF and PS thumbnails [installed]
+                  kdenetwork-filesharing: samba usershare properties menu
+                  kdf: view disk usage
+                  kio-admin: for managing files as administrator [installed]
+                  kompare: comparing files menu action
+                  konsole: terminal panel
+                  purpose: share context menu [installed]
+Required By     : cachyos-hypr-noctalia  dolphin-plugins
+Optional For    : None
+Conflicts With  : None
+Replaces        : None
+Installed Size  : 16.72 MiB
+Packager        : CachyOS <admin@cachyos.org>
+Build Date      : Thu Oct  8 11:54:00 2026
+Install Date    : Sat Oct 24 13:44:03 2026
+Install Reason  : Explicitly installed
+Install Script  : No
+Validated By    : Signature
+Backup Files    : None
+Extended Data   : pkgtype=pkg
+

@@ -1,0 +1,2 @@
+# release tarballs (git archive) write the commit they were made from into build-info
+src-tauri/build-info export-subst

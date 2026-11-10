@@ -1,0 +1,24 @@
+node_modules/
+dist/
+src-tauri/target/
+src-tauri/gen/
+
+# a local workspace archive (it holds a .env)
+/workspace-*.tar
+
+.env*
+*.log
+.DS_Store
+
+# signed releases made by release.sh (published as GitHub release files, not committed)
+/release/
+
+# a second build folder
+src-tauri/target-*/
+
+# local notes, never committed
+/workload.md
+/review.md
+/CLAUDE.md
+/NEXT.md
+/documents/
