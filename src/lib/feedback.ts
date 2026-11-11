@@ -62,7 +62,9 @@ export interface Logs {
 /** Everything a log line can carry that is yours: your names and addresses (report.ts), the names of
  *  your networks, and the names of your own files (a path in your home folder keeps only "~/"). */
 export function cleanLog(text: string, names: ReportNames, networks: string[]): string {
-  let t = scrubNames(text, names);
+  // script(1)'s header and footer, kept in runs from before the runner left them out: their date
+  // carries this computer's timezone
+  let t = scrubNames(text.replace(/^Script (?:started|done) on [^\n]* \[COMMAND[^\n]*(?:\n|$)/gm, ""), names);
   for (const n of [...networks].filter((x) => x.trim().length > 1).sort((a, b) => b.length - a.length)) t = t.replaceAll(n, "[a network]");
   return t.replace(/~\/[^\s'"`)\]]+/g, "~/[a file]");
 }

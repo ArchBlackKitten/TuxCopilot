@@ -94,6 +94,11 @@ describe("anonymized logs, for review later", () => {
     networks: ["HomeWifi-5G", "Ho"],
   };
 
+  it("script's own header and footer go (their date carries the timezone); the same words in a program's line stay", () => {
+    const run = 'Script started on 2026-11-10 19:28:53+02:00 [COMMAND="bash \'/run/x.sh\'" TTY="/dev/pts/2"]\nok\necho Script done on time\nScript done on 2026-11-10 19:29:05+02:00 [COMMAND_EXIT_CODE="1"]';
+    expect(cleanLog(run, names, [])).toBe("ok\necho Script done on time\n");
+  });
+
   it("every line cleaned: names, home files, networks, addresses", () => {
     expect(cleanLog("kit opened /home/kit/Secret.odt on HomeWifi-5G via 10.0.0.2", names, ["HomeWifi-5G"])).toBe("[you] opened ~/[a file] on [a network] via [an address]");
     expect(cleanLog("/etc/pacman.conf and ~/ alone", names, [])).toBe("/etc/pacman.conf and ~/ alone");

@@ -564,7 +564,28 @@ fn clean(t: &str) -> String {
         let end = t[i..].find('\n').map(|j| i + j + 1).unwrap_or(t.len());
         t.replace_range(i..end, "");
     }
+    drop_script_lines(&mut t);
     t
+}
+
+/// script(1)'s own header and footer in a terminal run's log ("Script started on <date> [COMMAND=…]",
+/// "Script done on <date> [COMMAND_EXIT_CODE=…]"): noise to a beginner, and their date carries this
+/// computer's timezone into History and Feedback. Only a whole line that starts so and carries
+/// script's [COMMAND stamp goes; a program saying those words otherwise keeps its line.
+fn drop_script_lines(t: &mut String) {
+    for start in ["Script started on ", "Script done on "] {
+        let mut from = 0;
+        while let Some(j) = t[from..].find(start) {
+            let i = from + j;
+            let end = t[i..].find('\n').map(|k| i + k + 1).unwrap_or(t.len());
+            if (i == 0 || t.as_bytes()[i - 1] == b'\n') && t[i..end].contains(" [COMMAND") {
+                t.replace_range(i..end, "");
+                from = i;
+            } else {
+                from = i + start.len();
+            }
+        }
+    }
 }
 
 impl Runner {
@@ -1371,6 +1392,19 @@ mod tests {
         assert_eq!(text, "hi ü\nok");
         assert_eq!(ev.first(), Some(&Event::Start(0)));
         assert_eq!(ev.last(), Some(&Event::End(0, 3)));
+    }
+
+    /// script(1)'s header and footer never reach the panel, History or Feedback (their date has
+    /// this computer's timezone); the same words inside a program's own line stay.
+    #[test]
+    fn scripts_own_lines_are_left_out() {
+        let mut st = Stream::default();
+        let log = b"Script started on 2026-11-10 19:28:53+02:00 [COMMAND=\"bash '/run/x.sh'\" TERM=\"xterm-256color\" TTY=\"/dev/pts/2\"]\r\nhello\r\necho Script started on purpose\r\nScript done on 2026-11-10 19:29:05+02:00 [COMMAND_EXIT_CODE=\"0\"]\r\n";
+        let text: String = st.feed(log).iter().filter_map(|e| if let Event::Text(t) = e { Some(t.clone()) } else { None }).collect();
+        assert_eq!(text, "hello\necho Script started on purpose\n");
+        let mut plain = String::from("Script done on a sunny day\n");
+        drop_script_lines(&mut plain);
+        assert_eq!(plain, "Script done on a sunny day\n", "no [COMMAND stamp: a program's own words");
     }
 
     #[test]

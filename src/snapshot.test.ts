@@ -76,7 +76,7 @@ describe("a snapshot before TuxCopilot changes the system", () => {
     m.run(s.before);
     expect(readFileSync(m.pre, "utf8").trim()).toBe("41");
     const out = m.run(s.after);
-    expect(out).toContain("Fluff: snapshots 41 and 42 hold what this run changed in the system's files (and anything else that changed one at the same moment). To see the files: sudo snapper -c root status 41..42. To undo it: History, Fluff's snapshots — it shows the files first.");
+    expect(out).toContain("Fluff: snapshots 41 and 42 hold what this run changed in the system's files (and anything else that changed one at the same moment). To see the files: sudo snapper -c root status 41..42. To undo it: History, beside this run, Undo this change — it lists the files first.");
     expect(out).not.toMatch(/exactly/);
     expect(m.snapper()).toEqual([
       "-c root create --type pre --cleanup-algorithm number --print-number --description TuxCopilot: Firewall: public",
