@@ -9,6 +9,13 @@
   your apps, your updates, your security, your services, from one window.
 </p>
 
+<p align="center">
+  <a href="#if-something-goes-wrong"><img src="https://img.shields.io/badge/Status-alpha%2C%20early%20stage-orange" alt="Status: alpha, early stage"></a>
+  <a href="#licence"><img src="https://img.shields.io/badge/Licence-AGPL--3.0--only-blue" alt="Licence: AGPL-3.0-only"></a>
+  <a href="#installing-it"><img src="https://img.shields.io/badge/Platform-Built%20on%20Arch%20Linux-1793D1?logo=archlinux&logoColor=white" alt="Platform: Built on Arch Linux"></a>
+  <a href="#for-developers"><img src="https://img.shields.io/badge/Built%20with-Tauri%202%20and%20Rust-24C8DB?logo=tauri&logoColor=white" alt="Built with Tauri 2 and Rust"></a>
+</p>
+
 ---
 
 TuxCopilot keeps the everyday work of running Arch in one place: updating
