@@ -13,12 +13,12 @@
   Public Key
 </h6>
 
-<h2 align="center">
+<h1 align="center">
 
   ```
   1C30 D714 9E20 A472 4D92 A4E3 24D4 340F E9E2 BF54
   ```
-</h2>
+</h1>
 
 <p align="center">
   <a href="#if-something-goes-wrong"><img src="https://img.shields.io/badge/Status-alpha%2C%20early%20stage-orange" alt="Status: Alpha, early stage"></a>
